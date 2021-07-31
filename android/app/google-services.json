@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "943908045609",
+    "project_id": "rift-crawler",
+    "storage_bucket": "rift-crawler.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943908045609:android:a9a950e7a6f2cf0ee2ad38",
+        "android_client_info": {
+          "package_name": "com.viniciusamelio.riven"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943908045609-1tpq1hr0phg8g1a4vvi7213fe5smqang.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0eRBh9FQ8eZeRhuwMcN90fqAIVwvHgoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943908045609-1tpq1hr0phg8g1a4vvi7213fe5smqang.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
