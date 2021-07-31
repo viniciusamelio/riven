@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:riven/shared/domain/entities/champion_counter.dart';
 import 'package:riven/shared/domain/entities/champion_stats.dart';
 import 'package:riven/shared/domain/entities/item.dart';
-import 'package:riven/shared/domain/entities/rune.dart';
+import 'package:riven/shared/domain/entities/rune_tree.dart';
 import 'package:riven/shared/domain/entities/skill.dart';
 import 'package:riven/shared/domain/entities/summoner_spell.dart';
 
@@ -11,7 +11,7 @@ class Build extends Equatable {
   final List<ChampionCounter>? countereds;
   final List<ChampionCounter>? counters;
   final List<Item>? items;
-  final List<Rune>? runes;
+  final List<RuneTree>? runes;
   final List<Skill>? skillPriority;
   final List<SummonerSpell>? spells;
 
