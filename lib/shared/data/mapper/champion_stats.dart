@@ -7,7 +7,7 @@ class ChampionStatsMapper {
         map['banrate'].toString().replaceAll('%', '').replaceAll('.', ''),
       ),
       gamesAnalyzed: int.parse(
-        map['gamesAnalyzed'].toString().replaceAll(',', 'replace'),
+        map['gamesAnalyzed'].toString().replaceAll(',', ''),
       ),
       name: map['name'],
       pickrate: double.parse(

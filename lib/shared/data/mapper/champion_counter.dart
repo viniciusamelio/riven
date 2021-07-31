@@ -4,7 +4,12 @@ class ChampionCounterMapper {
   static ChampionCounter fromMap(Map<String, dynamic> map) {
     return ChampionCounter(
         gamesCount: int.parse(
-          map['gamesCount'].toString().replaceAll('games', '').trim(),
+          map['gamesCount']
+              .toString()
+              .replaceAll('games', '')
+              .replaceAll(',', '')
+              .replaceAll('.', '')
+              .trim(),
         ),
         name: map['name'],
         portraitUrl: map['src'],

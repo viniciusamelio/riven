@@ -12,7 +12,7 @@ import 'package:riven/shared/domain/entities/skill.dart';
 import 'package:riven/shared/domain/entities/summoner_spell.dart';
 
 class BuildMapper {
-  static Build fromMap(Map<String, dynamic> map) {
+  static Build fromMap(dynamic map) {
     final List<ChampionCounter> countereds = [];
 
     for (var countered in map['countered']) {
@@ -27,7 +27,11 @@ class BuildMapper {
 
     final List<Item> items = [];
 
-    for (var item in map['items']) {
+    for (var item in map['items']['starting']) {
+      items.add(ItemMapper.fromMap(item));
+    }
+
+    for (var item in map['items']['endgame']) {
       items.add(ItemMapper.fromMap(item));
     }
 
@@ -39,7 +43,7 @@ class BuildMapper {
 
     final List<Skill> skills = [];
 
-    for (var skill in map['skillPriority']) {
+    for (var skill in map['skillsPriority']) {
       skills.add(SkillMapper.fromMap(skill));
     }
 
