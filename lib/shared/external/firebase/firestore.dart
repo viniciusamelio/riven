@@ -3,11 +3,8 @@ import 'package:riven/shared/domain/datasources/document_db.dart';
 
 class FirestoreDatasource implements DocumentDBDatasource {
   late CollectionReference _collectionReference;
-  late FirebaseFirestore _firestore;
 
   FirestoreDatasource({required String collectionName}) {
-    _firestore = FirebaseFirestore.instance;
-
     _collectionReference =
         FirebaseFirestore.instance.collection(collectionName);
   }

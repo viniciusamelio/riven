@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  awesome_dialog: ^2.1.0
   cloud_firestore: ^2.4.0
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
@@ -31,9 +32,11 @@ dependencies:
   fpdart: ^0.0.8
   from_css_color: ^2.0.0
   google_fonts: ^2.1.0
+  kiwi: ^3.0.0
   lottie: ^1.1.0
   mobx: ^2.0.1
   mocktail: ^0.1.4
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
