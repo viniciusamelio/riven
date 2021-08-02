@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Portrait extends StatelessWidget {
+class Portrait extends StatefulWidget {
   final Function onTap;
   final String imageUrl;
   final String name;
   final String lane;
   final Color accentColor;
-  double? size;
 
   Portrait({
     Key? key,
@@ -20,9 +19,16 @@ class Portrait extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _PortraitState createState() => _PortraitState();
+}
+
+class _PortraitState extends State<Portrait> {
+  double? size;
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onTap,
+      onTap: () => widget.onTap,
       child: Container(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -33,16 +39,16 @@ class Portrait extends StatelessWidget {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: NetworkImage(imageUrl),
+                    image: NetworkImage(widget.imageUrl),
                     fit: BoxFit.cover,
                   )),
             ),
             Text(
-              name,
-              style: GoogleFonts.inter(color: accentColor, fontSize: 12),
+              widget.name,
+              style: GoogleFonts.inter(color: widget.accentColor, fontSize: 12),
             ),
             Text(
-              lane,
+              widget.lane,
               style: GoogleFonts.inter(
                 fontSize: 10,
                 color: Colors.white,
