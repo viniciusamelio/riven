@@ -7,14 +7,16 @@ class Portrait extends StatelessWidget {
   final String name;
   final String lane;
   final Color accentColor;
+  double? size;
 
-  const Portrait({
+  Portrait({
     Key? key,
     required this.onTap,
     required this.imageUrl,
     required this.name,
     required this.lane,
     required this.accentColor,
+    size,
   }) : super(key: key);
 
   @override
@@ -26,8 +28,8 @@ class Portrait extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              height: 65,
-              width: 65,
+              height: size ?? 65,
+              width: size ?? 65,
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
