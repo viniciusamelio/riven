@@ -25,7 +25,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
       getBuildsDIContainer(),
     );
 
-    //TODO: Separar a reaction num arquivo separado
     _loadingBuildsReaction = reaction(
       (_) =>
           _loadingStore.listBuildObservable?.status == FutureStatus.fulfilled,
@@ -46,8 +45,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
               )..show();
             },
             (buildList) {
-              //TODO: Adicionar o push para a tela de listagem
               _buildSet.builds.addAll(buildList);
+              Navigator.of(context).pushReplacementNamed('/home');
             },
           );
         }

@@ -10,6 +10,13 @@ final darkTheme = ThemeData(
   errorColor: red,
   primaryColorDark: primaryGreen,
   fontFamily: GoogleFonts.inter().fontFamily,
+  textTheme: TextTheme(
+    subtitle1: TextStyle(
+      color: greyTextColor,
+      fontWeight: FontWeight.w700,
+      fontSize: 14,
+    ),
+  ),
   inputDecorationTheme: InputDecorationTheme(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
