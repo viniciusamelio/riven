@@ -1,8 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:from_css_color/from_css_color.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:riven/modules/builds/presentation/views/builds.dart';
 import 'package:riven/modules/home/presentation/presenters/home_store.dart';
 import 'package:riven/modules/search/presentation/views/search.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
@@ -62,9 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
         controller: _pageController,
         children: [
           Search(),
-          Container(
-            color: purple,
-          ),
+          Builds(),
           Container(
             color: red,
           ),

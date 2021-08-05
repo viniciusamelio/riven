@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:riven/shared/presentation/widgets/params/portraits.dart';
@@ -23,15 +24,21 @@ class _PortraitState extends State<Portrait> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              height: size ?? 65,
-              width: size ?? 65,
-              decoration: BoxDecoration(
+                height:
+                    widget.data.size ?? MediaQuery.of(context).size.width / 8,
+                width:
+                    widget.data.size ?? MediaQuery.of(context).size.width / 8,
+                child: CachedNetworkImage(
+                  imageUrl: widget.data.imageUrl,
+
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  //diskCacheExpire: Duration(days: 30),
+                ),
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: NetworkImage(widget.data.imageUrl),
-                    fit: BoxFit.cover,
-                  )),
-            ),
+                )),
             Text(
               widget.data.name,
               style: GoogleFonts.inter(
