@@ -18,27 +18,23 @@ class _PortraitState extends State<Portrait> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => widget.data.onTap,
+      onTap: () {
+        widget.data.onTap();
+      },
       child: Container(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-                height:
-                    widget.data.size ?? MediaQuery.of(context).size.width / 8,
-                width:
-                    widget.data.size ?? MediaQuery.of(context).size.width / 8,
-                child: CachedNetworkImage(
-                  imageUrl: widget.data.imageUrl,
-
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => CircularProgressIndicator(),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
-                  //diskCacheExpire: Duration(days: 30),
+              height: widget.data.size ?? MediaQuery.of(context).size.width / 8,
+              width: widget.data.size ?? MediaQuery.of(context).size.width / 8,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: CachedNetworkImageProvider(widget.data.imageUrl),
                 ),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                )),
+              ),
+            ),
             Text(
               widget.data.name,
               style: GoogleFonts.inter(
