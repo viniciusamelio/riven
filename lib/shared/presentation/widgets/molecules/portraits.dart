@@ -16,7 +16,7 @@ class _PortraitState extends State<Portrait> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => widget.data.onTap!(),
+      onTap: () => widget.data.onTap != null ? widget.data.onTap!() : null,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
