@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:riven/modules/builds/presentation/presenters/builds_store.dart';
 import 'package:riven/shared/domain/entities/build_set.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
-import 'package:riven/shared/presentation/widgets/params/portraits.dart';
-import 'package:riven/shared/presentation/widgets/portraits.dart';
+import 'package:riven/shared/presentation/widgets/organisms/portrait_grid.dart';
+import 'package:riven/shared/presentation/widgets/params/portrait_grid.dart';
 
 class Builds extends StatefulWidget {
   const Builds({Key? key}) : super(key: key);
@@ -52,26 +52,11 @@ class _BuildsState extends State<Builds> {
               bottom: 50,
             ),
             width: MediaQuery.of(context).size.width,
-            child: GridView.builder(
-                itemCount: _buildsStore.buildSet?.builds.length,
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                ),
-                itemBuilder: (context, index) {
-                  final champion =
-                      _buildsStore.buildSet?.builds[index].champion;
-                  return Portrait(
-                    data: PortraitParams(
-                      accentColor: primaryGreen,
-                      imageUrl: champion!.portraitUrl,
-                      name: champion.name,
-                      size: 10,
-                      lane: champion.role,
-                      onTap: () => print('clicked'),
-                    ),
-                  );
-                }),
+            child: PortraitsGrid(
+              data: PortraitGridParams(
+                _buildsStore.buildSet!.builds,
+              ),
+            ),
           )
         ],
       ),

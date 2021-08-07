@@ -13,8 +13,6 @@ class Portrait extends StatefulWidget {
 }
 
 class _PortraitState extends State<Portrait> {
-  double? size;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
