@@ -9,7 +9,7 @@ final darkTheme = ThemeData(
   accentColor: primaryGreen,
   errorColor: red,
   primaryColorDark: primaryGreen,
-  fontFamily: GoogleFonts.inter().fontFamily,
+  fontFamily: 'Inter',
   textTheme: TextTheme(
     subtitle1: TextStyle(
       color: greyTextColor,
@@ -35,3 +35,5 @@ final darkTheme = ThemeData(
   ),
   backgroundColor: backgroundColor,
 );
+
+final fontFamily = GoogleFonts.inter().fontFamily;

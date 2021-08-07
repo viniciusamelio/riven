@@ -5,6 +5,7 @@ final primaryGreen = fromCssColor('#38F061');
 final spotlightDark = fromCssColor('#2B2E3C');
 final mediumDark = fromCssColor('#2B2E3B');
 final greyTextColor = fromCssColor('#7E7B7B');
+final mediumGreyTextColor = fromCssColor('#B5B5B5');
 final red = fromCssColor('#FC414C');
 final purple = fromCssColor('#6B5EFB');
 final blue = fromCssColor('#26CBFF');
