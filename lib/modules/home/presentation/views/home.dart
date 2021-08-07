@@ -58,8 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: new NeverScrollableScrollPhysics(),
         controller: _pageController,
         children: [
-          Search(),
-          Builds(),
+          SearchScreen(),
+          BuildsScreen(),
           Container(
             color: red,
           ),
