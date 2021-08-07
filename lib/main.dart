@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:riven/modules/builds/presentation/views/build.dart';
 import 'package:riven/modules/home/presentation/views/home.dart';
 import 'package:riven/modules/home/presentation/views/loading.dart';
 import 'package:riven/shared/domain/entities/build_set.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           '/': (context) => const LoadingScreen(),
-          '/home': (context) => const HomeScreen()
+          '/home': (context) => const HomeScreen(),
+          '/build': (context) => const BuildScreen()
         },
       ),
     );
