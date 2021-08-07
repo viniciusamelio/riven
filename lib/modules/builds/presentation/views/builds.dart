@@ -54,7 +54,7 @@ class _BuildsState extends State<BuildsScreen> {
               data: PortraitGridParams(
                 _buildsStore.buildSet!.builds,
                 routeName: '/build',
-                portraitsSize: MediaQuery.of(context).size.width / 7,
+                portraitsSize: MediaQuery.of(context).size.width / 9,
               ),
             ),
           )
