@@ -16,9 +16,7 @@ class _PortraitState extends State<Portrait> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        widget.data.onTap();
-      },
+      onTap: widget.data.onTap,
       child: Container(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -33,18 +31,22 @@ class _PortraitState extends State<Portrait> {
                 ),
               ),
             ),
-            Text(
-              widget.data.name,
-              style: GoogleFonts.inter(
-                  color: widget.data.accentColor, fontSize: 12),
-            ),
-            Text(
-              widget.data.lane,
-              style: GoogleFonts.inter(
-                fontSize: 10,
-                color: Colors.white,
-              ),
-            )
+            widget.data.name != null
+                ? Text(
+                    widget.data.name.toString(),
+                    style: GoogleFonts.inter(
+                        color: widget.data.accentColor, fontSize: 12),
+                  )
+                : Container(),
+            widget.data.lane != null
+                ? Text(
+                    widget.data.lane.toString(),
+                    style: GoogleFonts.inter(
+                      fontSize: 10,
+                      color: Colors.white,
+                    ),
+                  )
+                : Container()
           ],
         ),
       ),

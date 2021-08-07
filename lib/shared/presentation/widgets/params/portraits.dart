@@ -1,18 +1,18 @@
 import 'package:flutter/widgets.dart';
 
 class PortraitParams {
-  final Function onTap;
+  Function()? onTap;
   final String imageUrl;
-  final String name;
-  final String lane;
+  String? name;
+  String? lane;
   final Color accentColor;
   double? size;
 
   PortraitParams(
-      {required this.onTap,
+      {this.onTap,
       required this.imageUrl,
-      required this.name,
-      required this.lane,
+      this.name,
+      this.lane,
       required this.accentColor,
       size});
 }
