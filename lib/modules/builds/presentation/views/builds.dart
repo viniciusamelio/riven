@@ -4,17 +4,18 @@ import 'package:provider/provider.dart';
 import 'package:riven/modules/builds/presentation/presenters/builds_store.dart';
 import 'package:riven/shared/domain/entities/build_set.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
+import 'package:riven/shared/presentation/styles/padding.dart';
 import 'package:riven/shared/presentation/widgets/organisms/portrait_grid.dart';
 import 'package:riven/shared/presentation/widgets/params/portrait_grid.dart';
 
-class Builds extends StatefulWidget {
-  const Builds({Key? key}) : super(key: key);
+class BuildsScreen extends StatefulWidget {
+  const BuildsScreen({Key? key}) : super(key: key);
 
   @override
   _BuildsState createState() => _BuildsState();
 }
 
-class _BuildsState extends State<Builds> {
+class _BuildsState extends State<BuildsScreen> {
   late BuildsStore _buildsStore;
 
   @override
@@ -27,10 +28,7 @@ class _BuildsState extends State<Builds> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(
-        vertical: 40,
-        horizontal: 20,
-      ),
+      padding: screenPadding,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
