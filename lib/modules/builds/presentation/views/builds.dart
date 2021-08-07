@@ -40,7 +40,7 @@ class _BuildsState extends State<BuildsScreen> {
               style: GoogleFonts.inter(
                 color: primaryGreen,
                 fontSize: 36,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w800,
               ),
             ),
           ),
@@ -53,6 +53,8 @@ class _BuildsState extends State<BuildsScreen> {
             child: PortraitsGrid(
               data: PortraitGridParams(
                 _buildsStore.buildSet!.builds,
+                routeName: '/build',
+                portraitsSize: MediaQuery.of(context).size.width / 7,
               ),
             ),
           )
