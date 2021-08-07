@@ -10,6 +10,7 @@ class Build extends Equatable {
   final ChampionStats? champion;
   final List<ChampionCounter>? countereds;
   final List<ChampionCounter>? counters;
+  final List<Item>? earlyItems;
   final List<Item>? items;
   final List<RuneTree>? runes;
   final List<Skill>? skillPriority;
@@ -19,6 +20,7 @@ class Build extends Equatable {
       {this.champion,
       this.countereds,
       this.counters,
+      this.earlyItems,
       this.items,
       this.runes,
       this.skillPriority,
@@ -29,6 +31,7 @@ class Build extends Equatable {
         champion,
         countereds,
         counters,
+        earlyItems,
         items,
         runes,
         skillPriority,

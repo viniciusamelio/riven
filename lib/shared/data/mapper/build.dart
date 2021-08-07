@@ -25,14 +25,15 @@ class BuildMapper {
       counters.add(ChampionCounterMapper.fromMap(counter));
     }
 
-    final List<Item> items = [];
+    final List<Item> earlyItems = [];
+    final List<Item> endgameItems = [];
 
     for (var item in map['items']['starting']) {
-      items.add(ItemMapper.fromMap(item));
+      earlyItems.add(ItemMapper.fromMap(item));
     }
 
     for (var item in map['items']['endgame']) {
-      items.add(ItemMapper.fromMap(item));
+      endgameItems.add(ItemMapper.fromMap(item));
     }
 
     final List<RuneTree> runes = [];
@@ -59,7 +60,8 @@ class BuildMapper {
       ),
       countereds: countereds,
       counters: counters,
-      items: items,
+      earlyItems: earlyItems,
+      items: endgameItems,
       runes: runes,
       skillPriority: skills,
       spells: spells,
