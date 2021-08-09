@@ -32,11 +32,8 @@ class GameAssetImage extends StatelessWidget {
           ),
         ),
         Container(
-          constraints: BoxConstraints(
-            maxWidth: 65,
-          ),
           child: Text(
-            data.label,
+            data.label.replaceAll(' ', '\n'),
             style: assetLabelTextStyle(
               color: Colors.white,
               weight: FontWeight.w600,
