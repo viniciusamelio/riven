@@ -59,7 +59,6 @@ class _SkillSectionState extends State<SkillSection> {
         ),
         const SizedBox(height: 5),
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: children,
         )
       ],
