@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:riven/modules/builds/presentation/widgets/molecules/game_asset_image.dart';
 import 'package:riven/modules/builds/presentation/widgets/molecules/section_title.dart';
 import 'package:riven/modules/builds/presentation/widgets/molecules/stat_block.dart';
-import 'package:riven/modules/builds/presentation/widgets/params/game_asset_image.dart';
+import 'package:riven/modules/builds/presentation/widgets/organisms/skill_section.dart';
+import 'package:riven/modules/builds/presentation/widgets/organisms/spell_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/section_title.dart';
+import 'package:riven/modules/builds/presentation/widgets/params/skill_section.dart';
+import 'package:riven/modules/builds/presentation/widgets/params/spell_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/stat_block.dart';
 import 'package:riven/shared/domain/entities/build.dart';
-import 'package:riven/shared/domain/entities/skill.dart';
-import 'package:riven/shared/domain/entities/summoner_spell.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
 import 'package:riven/shared/presentation/styles/padding.dart';
 import 'package:riven/shared/presentation/styles/text.dart';
@@ -112,83 +112,22 @@ class _BuildViewState extends State<BuildScreen> {
             const SizedBox(
               height: 20,
             ),
-            SectionTitle(
-              data: SectionTitleParams(
-                title: 'Feitiços de invocador',
+            SpellSection(
+              data: SpellSectionParams(
+                spells: _build.spells!,
               ),
             ),
-            const SizedBox(height: 5),
-            _spells(_build.spells!),
             const SizedBox(
               height: 20,
             ),
-            SectionTitle(
-              data: SectionTitleParams(
-                title: 'Ordem das habilidades',
+            SkillSection(
+              data: SkillSectionParams(
+                skills: _build.skillPriority!,
               ),
             ),
-            const SizedBox(height: 5),
-            _skills(_build.skillPriority!),
           ],
         ),
       ),
-    );
-  }
-
-  Row _skills(List<Skill> skills) {
-    List<Widget> children = [];
-    for (var skill in skills) {
-      children.add(
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GameAssetImage(
-            data: GameAssetImageParams(
-              imageUrl: skill.imageUrl,
-              label: skill.key,
-            ),
-          ),
-        ),
-      );
-
-      if (skill != skills[skills.length - 1]) {
-        children.add(
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Icon(
-              Icons.arrow_forward_ios,
-              color: greyTextColor,
-            ),
-          ),
-        );
-      }
-    }
-
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: children,
-    );
-  }
-
-  Row _spells(List<SummonerSpell> spells) {
-    List<Widget> children = [];
-
-    for (var spell in spells) {
-      children.add(
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GameAssetImage(
-            data: GameAssetImageParams(
-              imageUrl: spell.imageUrl,
-              label: spell.name,
-            ),
-          ),
-        ),
-      );
-    }
-
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: children,
     );
   }
 }
