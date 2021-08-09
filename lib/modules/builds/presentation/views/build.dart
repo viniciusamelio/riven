@@ -4,9 +4,11 @@ import 'package:riven/modules/builds/presentation/widgets/molecules/section_titl
 import 'package:riven/modules/builds/presentation/widgets/molecules/stat_block.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/skill_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/spell_section.dart';
+import 'package:riven/modules/builds/presentation/widgets/organisms/starting_items_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/section_title.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/skill_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/spell_section.dart';
+import 'package:riven/modules/builds/presentation/widgets/params/starting_items_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/stat_block.dart';
 import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
@@ -125,6 +127,14 @@ class _BuildViewState extends State<BuildScreen> {
                 skills: _build.skillPriority!,
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            StartingItemsSection(
+              data: StartingItemsSectionParams(
+                items: _build.earlyItems!,
+              ),
+            )
           ],
         ),
       ),
