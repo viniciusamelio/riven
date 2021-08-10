@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:riven/modules/builds/presentation/widgets/molecules/section_title.dart';
 import 'package:riven/modules/builds/presentation/widgets/molecules/stat_block.dart';
+import 'package:riven/modules/builds/presentation/widgets/organisms/build_header.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/endgame_items_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/runes_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/skill_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/spell_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/starting_items_section.dart';
+import 'package:riven/modules/builds/presentation/widgets/params/build_header.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/endgame_items_secion.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/runes_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/section_title.dart';
@@ -71,38 +73,10 @@ class _BuildViewState extends State<BuildScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _build.champion!.name,
-                      style: headerOneStyle(),
-                    ),
-                    Text(
-                      _build.champion!.role,
-                      style: headerThreeStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      "${decimalFormatter.format(_build.champion!.gamesAnalyzed)} Games Analisados",
-                      style: defaultTextStyle(),
-                    ),
-                  ],
-                ),
-                Portrait(
-                  data: PortraitParams(
-                    accentColor: primaryGreen,
-                    imageUrl: _build.champion!.portraitUrl,
-                    size: 70,
-                    borderWidth: 3,
-                  ),
-                )
-              ],
+            BuildHeader(
+              data: BuildHeaderParams(
+                championStats: _build.champion!,
+              ),
             ),
             const SizedBox(
               height: 20,
