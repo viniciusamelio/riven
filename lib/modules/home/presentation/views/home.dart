@@ -29,6 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Theme.of(context).backgroundColor,
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: _homeStore.pageIndex,
+        itemShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        unselectedItemColor: greyTextColor,
         onTap: (i) => setState(
           () {
             _homeStore.pageIndex = i;

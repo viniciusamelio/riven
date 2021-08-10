@@ -20,6 +20,7 @@ import 'package:riven/shared/presentation/styles/padding.dart';
 import 'package:riven/shared/presentation/styles/text.dart';
 import 'package:riven/shared/presentation/widgets/molecules/portraits.dart';
 import 'package:riven/shared/presentation/widgets/params/portraits.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class BuildScreen extends StatefulWidget {
   const BuildScreen({Key? key}) : super(key: key);
@@ -41,6 +42,28 @@ class _BuildViewState extends State<BuildScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: SalomonBottomBar(
+        currentIndex: 0,
+        onTap: (i) => setState(
+          () {},
+        ),
+        itemShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        unselectedItemColor: greyTextColor,
+        items: [
+          SalomonBottomBarItem(
+            icon: Icon(Icons.book),
+            title: Text("Build"),
+            selectedColor: primaryGreen,
+          ),
+          SalomonBottomBarItem(
+            icon: Icon(Icons.timeline),
+            title: Text("Counters"),
+            selectedColor: purple,
+          ),
+        ],
+      ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: SingleChildScrollView(
         padding: screenPadding,
