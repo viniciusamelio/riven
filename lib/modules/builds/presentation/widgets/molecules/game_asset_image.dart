@@ -16,8 +16,8 @@ class GameAssetImage extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: data.size ?? 43,
-          width: data.size ?? 43,
+          height: data.size ?? 38,
+          width: data.size ?? 38,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
@@ -31,14 +31,17 @@ class GameAssetImage extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          child: Text(
-            data.label.replaceAll(' ', '\n'),
-            style: assetLabelTextStyle(
-              color: Colors.white,
-              weight: FontWeight.w600,
+        Visibility(
+          visible: data.label != null,
+          child: Container(
+            child: Text(
+              data.label.toString().replaceAll(' ', '\n'),
+              style: assetLabelTextStyle(
+                color: Colors.white,
+                weight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
         )
       ],

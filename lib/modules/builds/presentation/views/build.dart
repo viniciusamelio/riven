@@ -3,10 +3,12 @@ import 'package:intl/intl.dart';
 import 'package:riven/modules/builds/presentation/widgets/molecules/section_title.dart';
 import 'package:riven/modules/builds/presentation/widgets/molecules/stat_block.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/endgame_items_section.dart';
+import 'package:riven/modules/builds/presentation/widgets/organisms/runes_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/skill_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/spell_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/starting_items_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/endgame_items_secion.dart';
+import 'package:riven/modules/builds/presentation/widgets/params/runes_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/section_title.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/skill_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/spell_section.dart';
@@ -119,6 +121,14 @@ class _BuildViewState extends State<BuildScreen> {
             SpellSection(
               data: SpellSectionParams(
                 spells: _build.spells!,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            RunesSection(
+              data: RunesSectionParams(
+                runes: _build.runes!,
               ),
             ),
             const SizedBox(
