@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:riven/modules/builds/presentation/presenters/build_store.dart';
 import 'package:riven/modules/builds/presentation/widgets/pages/build.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/build_page.dart';
 import 'package:riven/shared/domain/entities/build.dart';
@@ -14,6 +15,13 @@ class BuildScreen extends StatefulWidget {
 
 class _BuildViewState extends State<BuildScreen> {
   late final Build _build;
+  late final BuildStore _buildStore;
+
+  @override
+  void initState() {
+    _buildStore = BuildStore();
+    super.initState();
+  }
 
   @override
   void didChangeDependencies() {
@@ -25,9 +33,11 @@ class _BuildViewState extends State<BuildScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: SalomonBottomBar(
-        currentIndex: 0,
+        currentIndex: _buildStore.pageIndex,
         onTap: (i) => setState(
-          () {},
+          () {
+            _buildStore.pageIndex = i;
+          },
         ),
         itemShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
