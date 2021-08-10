@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/build_header.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/endgame_items_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/runes_section.dart';
@@ -26,7 +25,6 @@ class BuildScreen extends StatefulWidget {
 
 class _BuildViewState extends State<BuildScreen> {
   late final Build _build;
-  var decimalFormatter = NumberFormat.decimalPattern('pt-BR');
 
   @override
   void didChangeDependencies() {
