@@ -51,7 +51,9 @@ class _RunesSectionState extends State<RunesSection> {
                             imageUrl: item.imageUrl,
                             size: index > 1 && runeset.runes.length == 5
                                 ? 20
-                                : 30,
+                                : index == 0 && runeset.runes.length == 4
+                                    ? 35
+                                    : 30,
                           ),
                         ),
                       );
