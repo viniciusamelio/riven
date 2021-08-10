@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:riven/modules/builds/presentation/widgets/molecules/section_title.dart';
-import 'package:riven/modules/builds/presentation/widgets/molecules/stat_block.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/build_header.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/endgame_items_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/runes_section.dart';
@@ -11,17 +9,12 @@ import 'package:riven/modules/builds/presentation/widgets/organisms/starting_ite
 import 'package:riven/modules/builds/presentation/widgets/params/build_header.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/endgame_items_secion.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/runes_section.dart';
-import 'package:riven/modules/builds/presentation/widgets/params/section_title.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/skill_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/spell_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/starting_items_section.dart';
-import 'package:riven/modules/builds/presentation/widgets/params/stat_block.dart';
 import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
 import 'package:riven/shared/presentation/styles/padding.dart';
-import 'package:riven/shared/presentation/styles/text.dart';
-import 'package:riven/shared/presentation/widgets/molecules/portraits.dart';
-import 'package:riven/shared/presentation/widgets/params/portraits.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class BuildScreen extends StatefulWidget {
@@ -77,40 +70,6 @@ class _BuildViewState extends State<BuildScreen> {
               data: BuildHeaderParams(
                 championStats: _build.champion!,
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SectionTitle(
-              data: SectionTitleParams(
-                title: 'Estatísticas',
-              ),
-            ),
-            const SizedBox(height: 5),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                StatBlock(
-                    data: StatBlockParams(
-                  label: 'Taxa de ban',
-                  value: decimalFormatter.format(_build.champion!.banrate),
-                  valueColor: red,
-                )),
-                StatBlock(
-                  data: StatBlockParams(
-                    label: 'Taxa de pick',
-                    value: decimalFormatter.format(_build.champion!.pickrate),
-                    valueColor: blue,
-                  ),
-                ),
-                StatBlock(
-                  data: StatBlockParams(
-                    label: 'Taxa de vitória',
-                    value: decimalFormatter.format(_build.champion!.winrate),
-                    valueColor: golden,
-                  ),
-                ),
-              ],
             ),
             const SizedBox(
               height: 20,
