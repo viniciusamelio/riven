@@ -47,7 +47,7 @@ class _EndgameItemsSectionState extends State<EndgameItemsSection> {
         const SizedBox(height: 5),
         Container(
           width: MediaQuery.of(context).size.width,
-          height: 130,
+          height: 150,
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: children,

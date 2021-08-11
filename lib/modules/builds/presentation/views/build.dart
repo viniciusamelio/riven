@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:riven/modules/builds/presentation/presenters/build_store.dart';
 import 'package:riven/modules/builds/presentation/widgets/pages/build.dart';
+import 'package:riven/modules/builds/presentation/widgets/pages/counters.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/build_page.dart';
+import 'package:riven/modules/builds/presentation/widgets/params/counters.dart';
 import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -16,10 +18,12 @@ class BuildScreen extends StatefulWidget {
 class _BuildViewState extends State<BuildScreen> {
   late final Build _build;
   late final BuildStore _buildStore;
+  late final PageController _pageController;
 
   @override
   void initState() {
     _buildStore = BuildStore();
+    _pageController = PageController();
     super.initState();
   }
 
@@ -37,6 +41,7 @@ class _BuildViewState extends State<BuildScreen> {
         onTap: (i) => setState(
           () {
             _buildStore.pageIndex = i;
+            _pageController.jumpToPage(i);
           },
         ),
         itemShape: RoundedRectangleBorder(
@@ -58,14 +63,16 @@ class _BuildViewState extends State<BuildScreen> {
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: _pageController,
         children: [
           BuildPage(
             data: BuildPageParams(
               build: _build,
             ),
           ),
-          BuildPage(
-            data: BuildPageParams(
+          CountersPage(
+            data: CountersPageParams(
               build: _build,
             ),
           ),
