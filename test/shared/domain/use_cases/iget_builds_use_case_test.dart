@@ -5,7 +5,7 @@ import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/domain/errors/champion_build.dart';
 import 'package:riven/shared/domain/errors/domain_exception.dart';
 import 'package:riven/shared/domain/repositories/build.dart';
-import 'package:riven/shared/domain/use_cases/get_builds.dart';
+import 'package:riven/shared/domain/use_cases/builds/get_builds.dart';
 
 class BuildRepositoryImpl extends Mock implements BuildRepository {}
 
