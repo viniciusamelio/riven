@@ -23,7 +23,9 @@ class _BuildViewState extends State<BuildScreen> {
   @override
   void initState() {
     _buildStore = BuildStore();
-    _pageController = PageController();
+    _pageController = PageController(
+      initialPage: _buildStore.pageIndex,
+    );
     super.initState();
   }
 
@@ -40,6 +42,7 @@ class _BuildViewState extends State<BuildScreen> {
         currentIndex: _buildStore.pageIndex,
         onTap: (i) => setState(
           () {
+            if (i == 0) Navigator.pop(context);
             _buildStore.pageIndex = i;
             _pageController.jumpToPage(i);
           },
@@ -49,6 +52,11 @@ class _BuildViewState extends State<BuildScreen> {
         ),
         unselectedItemColor: greyTextColor,
         items: [
+          SalomonBottomBarItem(
+            icon: Icon(Icons.arrow_back_ios),
+            title: Text("Voltar"),
+            unselectedColor: red,
+          ),
           SalomonBottomBarItem(
             icon: Icon(Icons.book),
             title: Text("Build"),
@@ -66,6 +74,7 @@ class _BuildViewState extends State<BuildScreen> {
         physics: NeverScrollableScrollPhysics(),
         controller: _pageController,
         children: [
+          Container(),
           BuildPage(
             data: BuildPageParams(
               build: _build,

@@ -5,5 +5,5 @@ class BuildStore = _BuildStoreBase with _$BuildStore;
 
 abstract class _BuildStoreBase with Store {
   @observable
-  int pageIndex = 0;
+  int pageIndex = 1;
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:riven/modules/builds/presentation/widgets/organisms/countereds_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/organisms/counters_section.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/counters.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/counters_section.dart';
@@ -32,6 +33,12 @@ class _CountersPageState extends State<CountersPage> {
             ),
             const SizedBox(
               height: 20,
+            ),
+            CounteredsSection(
+              data: CountersSectionParams(
+                champions: widget.data.build.countereds!,
+                championName: widget.data.build.champion!.name,
+              ),
             ),
           ],
         ),

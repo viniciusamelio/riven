@@ -9,27 +9,27 @@ import 'package:riven/modules/builds/presentation/widgets/params/section_title.d
 import 'package:riven/shared/domain/entities/build_set.dart';
 import 'package:riven/shared/domain/entities/champion_counter.dart';
 
-class CountersSection extends StatefulWidget {
+class CounteredsSection extends StatefulWidget {
   final CountersSectionParams data;
-  const CountersSection({
+  const CounteredsSection({
     Key? key,
     required this.data,
   }) : super(key: key);
 
   @override
-  _CountersSectionState createState() => _CountersSectionState();
+  _CounteredsSectionState createState() => _CounteredsSectionState();
 }
 
-class _CountersSectionState extends State<CountersSection> {
+class _CounteredsSectionState extends State<CounteredsSection> {
   var decimalFormatter = NumberFormat.decimalPattern('pt-BR');
   late final List<ChampionCounter> champions;
   late final BuildSet _buildSet;
   @override
   void initState() {
+    _buildSet = Provider.of<BuildSet>(context, listen: false);
     widget.data.champions.sort(
       (a, b) => b.gamesCount.compareTo(a.gamesCount),
     );
-    _buildSet = Provider.of<BuildSet>(context, listen: false);
     super.initState();
   }
 
@@ -40,7 +40,7 @@ class _CountersSectionState extends State<CountersSection> {
       children: [
         SectionTitle(
           data: SectionTitleParams(
-            title: '${widget.data.championName} é counterado(a)',
+            title: '${widget.data.championName} countera',
           ),
         ),
         const SizedBox(

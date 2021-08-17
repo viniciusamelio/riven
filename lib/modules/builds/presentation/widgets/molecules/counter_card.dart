@@ -64,17 +64,6 @@ class _CounterCardState extends State<CounterCard> {
                 height: 5,
               ),
               Text(
-                decimalFormatter.format(widget.data.champion.winrate) +
-                    ' %\nDe Vitória',
-                textAlign: TextAlign.center,
-                style: assetLabelTextStyle(
-                  color: primaryGreen,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
                 decimalFormatter.format(widget.data.champion.gamesCount) +
                     '\nGames Analisados',
                 textAlign: TextAlign.center,
