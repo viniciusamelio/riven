@@ -22,15 +22,21 @@ class MyApp extends StatelessWidget {
           create: (_) => BuildSet(),
         ),
       ],
-      child: MaterialApp(
-        title: 'Riven',
-        theme: darkTheme,
-        debugShowCheckedModeBanner: false,
-        routes: {
-          '/': (context) => const LoadingScreen(),
-          '/home': (context) => const HomeScreen(),
-          '/build': (context) => const BuildScreen()
+      child: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: (overscroll) {
+          overscroll.disallowGlow();
+          return true;
         },
+        child: MaterialApp(
+          title: 'Riven',
+          theme: darkTheme,
+          debugShowCheckedModeBanner: false,
+          routes: {
+            '/': (context) => const LoadingScreen(),
+            '/home': (context) => const HomeScreen(),
+            '/build': (context) => const BuildScreen()
+          },
+        ),
       ),
     );
   }
