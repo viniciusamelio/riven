@@ -26,8 +26,9 @@ class _CountersPageState extends State<CountersPage> {
           children: [
             CountersSection(
               data: CountersSectionParams(
-                  champions: widget.data.build.counters!,
-                  championName: widget.data.build.champion!.name),
+                champions: widget.data.build.counters!,
+                championName: widget.data.build.champion!.name,
+              ),
             ),
             const SizedBox(
               height: 20,
