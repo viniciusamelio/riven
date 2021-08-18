@@ -15,7 +15,7 @@ void main() {
 
   setUp(() {
     repository = SearchHistoryBuildsRepositoryImpl();
-    usecase = RemoveSearchedBuildsUseCase(repository);
+    usecase = RemoveSearchedBuilds(repository);
   });
 
   group('RemoveSearchedBuildsUseCase: ', () {
