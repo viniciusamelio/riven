@@ -16,10 +16,10 @@ void main() {
 
   setUp(() {
     repository = SearchHistoryBuildsRepositoryImpl();
-    useCase = GetSearchedBuildsUseCase(repository);
+    useCase = GetSearchedBuilds(repository);
   });
 
-  group('SearchHistoryBuildsRepository: ', () {
+  group('GetSearchedBuildsUseCase: ', () {
     test('Should return a list of builds', () async {
       when(() => repository.list()).thenAnswer(
         (_) async => Right(

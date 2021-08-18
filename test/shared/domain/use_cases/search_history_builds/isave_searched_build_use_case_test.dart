@@ -19,34 +19,36 @@ void main() {
     useCase = SaveSearchedBuild(repository);
   });
 
-  test('Should return a local storage error', () async {
-    when(() => repository.save('Aatrox', Build())).thenAnswer(
-      (_) async => Left(LocalStorageError(
-          message: 'Erro ao acessar o disco rígido do dispositivo')),
-    );
+  group('SaveSearchedBuildUseCase: ', () {
+    test('Should return a local storage error', () async {
+      when(() => repository.save('Aatrox', Build())).thenAnswer(
+        (_) async => Left(LocalStorageError(
+            message: 'Erro ao acessar o disco rígido do dispositivo')),
+      );
 
-    final result = await useCase(
-      'Aatrox',
-      Build(),
-    );
-
-    expect(result.isLeft(), true);
-    expect(result.fold((l) => l, (r) => r), isA<LocalStorageError>());
-  });
-
-  test('Should return a build', () async {
-    when(() => repository.save('Aatrox', Build())).thenAnswer(
-      (_) async => Right(
+      final result = await useCase(
+        'Aatrox',
         Build(),
-      ),
-    );
+      );
 
-    final result = await useCase.call(
-      'Aatrox',
-      Build(),
-    );
+      expect(result.isLeft(), true);
+      expect(result.fold((l) => l, (r) => r), isA<LocalStorageError>());
+    });
 
-    expect(result.isLeft(), false);
-    expect(result.fold((l) => l, (r) => r), isA<Build>());
+    test('Should return a build', () async {
+      when(() => repository.save('Aatrox', Build())).thenAnswer(
+        (_) async => Right(
+          Build(),
+        ),
+      );
+
+      final result = await useCase.call(
+        'Aatrox',
+        Build(),
+      );
+
+      expect(result.isLeft(), false);
+      expect(result.fold((l) => l, (r) => r), isA<Build>());
+    });
   });
 }

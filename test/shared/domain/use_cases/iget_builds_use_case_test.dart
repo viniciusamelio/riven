@@ -18,31 +18,33 @@ void main() {
     useCase = GetBuilds(repository);
   });
 
-  test('Should return a list of builds', () async {
-    when(() => repository.list()).thenAnswer(
-      (_) async => Right(
-        <Build>[],
-      ),
-    );
+  group('GetBuildsUseCase', () {
+    test('Should return a list of builds', () async {
+      when(() => repository.list()).thenAnswer(
+        (_) async => Right(
+          <Build>[],
+        ),
+      );
 
-    final result = await useCase.call();
+      final result = await useCase.call();
 
-    expect(result.isRight(), true);
-    expect(result.fold((l) => l, (r) => r), isA<List<Build>>());
-    verify(() => repository.list()).called(1);
-  });
+      expect(result.isRight(), true);
+      expect(result.fold((l) => l, (r) => r), isA<List<Build>>());
+      verify(() => repository.list()).called(1);
+    });
 
-  test('Should return a Champion Build Error', () async {
-    when(() => repository.list()).thenAnswer(
-      (_) async => Left(
-        ChampionBuildError(message: 'Build não encontrada'),
-      ),
-    );
+    test('Should return a Champion Build Error', () async {
+      when(() => repository.list()).thenAnswer(
+        (_) async => Left(
+          ChampionBuildError(message: 'Build não encontrada'),
+        ),
+      );
 
-    final result = await useCase.call();
+      final result = await useCase.call();
 
-    expect(result.isRight(), false);
-    expect(result.fold((l) => l, (r) => r), isA<DomainException>());
-    verify(() => repository.list()).called(1);
+      expect(result.isRight(), false);
+      expect(result.fold((l) => l, (r) => r), isA<DomainException>());
+      verify(() => repository.list()).called(1);
+    });
   });
 }
