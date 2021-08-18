@@ -5,7 +5,7 @@ import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/domain/errors/local_storage.dart';
 import 'package:riven/shared/domain/repositories/search_history_builds.dart';
 import 'package:riven/shared/domain/use_cases/search_history_builds/isave_searched_build_use_case.dart';
-import 'package:riven/shared/domain/use_cases/search_history_builds/save_searched_build_use_case.dart';
+import 'package:riven/shared/domain/use_cases/search_history_builds/save_searched_build.dart';
 
 class SearchHistoryBuildsRepositoryImpl extends Mock
     implements SearchHistoryBuildsRepository {}
@@ -25,7 +25,7 @@ void main() {
           message: 'Erro ao acessar o disco rígido do dispositivo')),
     );
 
-    final result = await useCase.call(
+    final result = await useCase(
       'Aatrox',
       Build(),
     );
