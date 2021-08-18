@@ -18,7 +18,7 @@ void main() {
     useCase = GetBuilds(repository);
   });
 
-  group('GetBuildsUseCase', () {
+  group('GetBuildsUseCase: ', () {
     test('Should return a list of builds', () async {
       when(() => repository.list()).thenAnswer(
         (_) async => Right(
