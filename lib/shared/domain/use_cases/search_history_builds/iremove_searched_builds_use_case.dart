@@ -7,5 +7,5 @@ abstract class IRemoveSearchedBuildsUseCase {
 
   IRemoveSearchedBuildsUseCase(this.repository);
 
-  Future<Either<LocalStorageError, void>> call();
+  Future<Either<LocalStorageError, String>> call();
 }
