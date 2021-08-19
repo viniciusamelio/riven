@@ -1,5 +1,5 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:riven/shared/domain/errors/local_storage.dart';
+import 'package:riven/shared/domain/errors/domain_exception.dart';
 import 'package:riven/shared/domain/repositories/search_history_builds.dart';
 
 abstract class IRemoveSearchedBuildsUseCase {
@@ -7,5 +7,5 @@ abstract class IRemoveSearchedBuildsUseCase {
 
   IRemoveSearchedBuildsUseCase(this.repository);
 
-  Future<Either<LocalStorageError, String>> call();
+  Future<Either<DomainException, String>> call();
 }
