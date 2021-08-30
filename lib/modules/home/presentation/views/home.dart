@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riven/modules/builds/presentation/views/builds.dart';
+import 'package:riven/modules/favorites_champions/views/favorite_champions.dart';
 import 'package:riven/modules/home/presentation/presenters/home_store.dart';
 import 'package:riven/modules/search/presentation/views/search.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
@@ -64,9 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           SearchScreen(),
           BuildsScreen(),
-          Container(
-            color: red,
-          ),
+          FavoriteChampionsScreen(),
         ],
       ),
     );

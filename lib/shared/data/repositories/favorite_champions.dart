@@ -10,7 +10,7 @@ class FavoriteChampionsRepositoryImpl implements FavoriteChampionsRepository {
 
   @override
   Future<List<Build>> list() async {
-    final List builds = await _dataSource.list();
+    final builds = await _dataSource.list();
     final List<Build> buildList = [];
     for (var build in builds) {
       buildList.add(

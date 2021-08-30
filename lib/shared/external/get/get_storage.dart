@@ -4,11 +4,11 @@ import 'package:riven/shared/domain/datasources/local_storage.dart';
 class GetStorageDataSource implements LocalStorage {
   final box = GetStorage();
 
-  Type? find(String key) {
+  find(String key) {
     return box.read<Type?>(key);
   }
 
-  List<Type?> list() {
+  list() {
     return box.getValues();
   }
 
