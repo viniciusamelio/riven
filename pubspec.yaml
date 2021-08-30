@@ -32,6 +32,7 @@ dependencies:
   flutter_mobx: ^2.0.0
   fpdart: ^0.0.8
   from_css_color: ^2.0.0
+  get_storage: ^2.0.3
   google_fonts: ^2.1.0
   intl: ^0.17.0
   kiwi: ^3.0.0
