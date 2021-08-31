@@ -27,7 +27,7 @@ class FavoriteChampionsRepositoryImpl implements FavoriteChampionsRepository {
 
   @override
   void save(String key, Build value) {
-    _dataSource.save(key, value);
+    _dataSource.save(key, value.champion!.name);
   }
 
   @override
