@@ -24,10 +24,26 @@ mixin _$BuildStore on _BuildStoreBase, Store {
     });
   }
 
+  final _$isFavoriteAtom = Atom(name: '_BuildStoreBase.isFavorite');
+
+  @override
+  bool get isFavorite {
+    _$isFavoriteAtom.reportRead();
+    return super.isFavorite;
+  }
+
+  @override
+  set isFavorite(bool value) {
+    _$isFavoriteAtom.reportWrite(value, super.isFavorite, () {
+      super.isFavorite = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
-pageIndex: ${pageIndex}
+pageIndex: ${pageIndex},
+isFavorite: ${isFavorite}
     ''';
   }
 }

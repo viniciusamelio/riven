@@ -4,6 +4,7 @@ import 'package:riven/modules/builds/presentation/widgets/pages/build.dart';
 import 'package:riven/modules/builds/presentation/widgets/pages/counters.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/build_page.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/counters.dart';
+import 'package:riven/shared/domain/di/builds/containers.dart';
 import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -22,7 +23,10 @@ class _BuildViewState extends State<BuildScreen> {
 
   @override
   void initState() {
-    _buildStore = BuildStore();
+    _buildStore = BuildStore(
+      saveFavoriteChampionUseCase: saveFavoriteChampionsDIContainer(),
+      removeFavoriteChampionUseCase: removeFavoriteChampionsDIContainer(),
+    );
     _pageController = PageController(
       initialPage: _buildStore.pageIndex,
     );
