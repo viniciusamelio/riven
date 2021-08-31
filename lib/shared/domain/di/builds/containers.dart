@@ -9,6 +9,10 @@ import 'package:riven/shared/domain/use_cases/builds/get_builds.dart';
 import 'package:riven/shared/domain/use_cases/builds/iget_builds_use_case.dart';
 import 'package:riven/shared/domain/use_cases/favorite_champions/get_favorite_champions.dart';
 import 'package:riven/shared/domain/use_cases/favorite_champions/iget_favorite_champions_use_case.dart';
+import 'package:riven/shared/domain/use_cases/favorite_champions/iremove_favorite_champion_use_case.dart';
+import 'package:riven/shared/domain/use_cases/favorite_champions/isave_favorite_champion_use_case.dart';
+import 'package:riven/shared/domain/use_cases/favorite_champions/remove_favorite_champion.dart';
+import 'package:riven/shared/domain/use_cases/favorite_champions/save_favorite_champion.dart';
 import 'package:riven/shared/external/firebase/firestore.dart';
 import 'package:riven/shared/external/get/get_storage.dart';
 
@@ -30,6 +34,36 @@ final getBuildsDIContainer = KiwiContainer()
 final getFavoriteChampionsDIContainer = KiwiContainer()
   ..registerFactory<IGetFavoriteChampionsUseCase>(
     (container) => GetFavoriteChampions(
+      container.resolve(),
+    ),
+  )
+  ..registerFactory<FavoriteChampionsRepository>(
+    (container) => FavoriteChampionsRepositoryImpl(
+      container.resolve(),
+    ),
+  )
+  ..registerFactory<LocalStorage>(
+    (container) => GetStorageDataSource(),
+  );
+
+final saveFavoriteChampionsDIContainer = KiwiContainer()
+  ..registerFactory<ISaveFavoriteChampionUseCase>(
+    (container) => SaveFavoriteChampion(
+      container.resolve(),
+    ),
+  )
+  ..registerFactory<FavoriteChampionsRepository>(
+    (container) => FavoriteChampionsRepositoryImpl(
+      container.resolve(),
+    ),
+  )
+  ..registerFactory<LocalStorage>(
+    (container) => GetStorageDataSource(),
+  );
+
+final removeFavoriteChampionsDIContainer = KiwiContainer()
+  ..registerFactory<IRemoveFavoriteChampionUseCase>(
+    (container) => RemoveFavoriteChampion(
       container.resolve(),
     ),
   )
