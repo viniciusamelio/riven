@@ -31,47 +31,35 @@ final getBuildsDIContainer = KiwiContainer()
     (container) => FirestoreDatasource(collectionName: 'builds'),
   );
 
+final favoriteChampionsRepoDIContainer = KiwiContainer()
+  ..registerFactory<FavoriteChampionsRepository>(
+    (container) => FavoriteChampionsRepositoryImpl(
+      localStorageDataSourceDIContainer(),
+    ),
+  );
+
+final localStorageDataSourceDIContainer = KiwiContainer()
+  ..registerFactory<LocalStorage>(
+    (container) => GetStorageDataSource(),
+  );
+
 final getFavoriteChampionsDIContainer = KiwiContainer()
   ..registerFactory<IGetFavoriteChampionsUseCase>(
     (container) => GetFavoriteChampions(
-      container.resolve(),
+      favoriteChampionsRepoDIContainer(),
     ),
-  )
-  ..registerFactory<FavoriteChampionsRepository>(
-    (container) => FavoriteChampionsRepositoryImpl(
-      container.resolve(),
-    ),
-  )
-  ..registerFactory<LocalStorage>(
-    (container) => GetStorageDataSource(),
   );
 
 final saveFavoriteChampionsDIContainer = KiwiContainer()
   ..registerFactory<ISaveFavoriteChampionUseCase>(
     (container) => SaveFavoriteChampion(
-      container.resolve(),
+      favoriteChampionsRepoDIContainer(),
     ),
-  )
-  ..registerFactory<FavoriteChampionsRepository>(
-    (container) => FavoriteChampionsRepositoryImpl(
-      container.resolve(),
-    ),
-  )
-  ..registerFactory<LocalStorage>(
-    (container) => GetStorageDataSource(),
   );
 
 final removeFavoriteChampionsDIContainer = KiwiContainer()
   ..registerFactory<IRemoveFavoriteChampionUseCase>(
     (container) => RemoveFavoriteChampion(
-      container.resolve(),
+      favoriteChampionsRepoDIContainer(),
     ),
-  )
-  ..registerFactory<FavoriteChampionsRepository>(
-    (container) => FavoriteChampionsRepositoryImpl(
-      container.resolve(),
-    ),
-  )
-  ..registerFactory<LocalStorage>(
-    (container) => GetStorageDataSource(),
   );
