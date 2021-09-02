@@ -36,16 +36,31 @@ mixin _$FavoriteChampionsStore on _FavoriteChampionsStoreBase, Store {
     });
   }
 
+  final _$favoriteChampionsAtom =
+      Atom(name: '_FavoriteChampionsStoreBase.favoriteChampions');
+
+  @override
+  ObservableList<Build> get favoriteChampions {
+    _$favoriteChampionsAtom.reportRead();
+    return super.favoriteChampions;
+  }
+
+  @override
+  set favoriteChampions(ObservableList<Build> value) {
+    _$favoriteChampionsAtom.reportWrite(value, super.favoriteChampions, () {
+      super.favoriteChampions = value;
+    });
+  }
+
   final _$_FavoriteChampionsStoreBaseActionController =
       ActionController(name: '_FavoriteChampionsStoreBase');
 
   @override
-  dynamic getFavoriteChampionsStore() {
-    final _$actionInfo =
-        _$_FavoriteChampionsStoreBaseActionController.startAction(
-            name: '_FavoriteChampionsStoreBase.getFavoriteChampionsStore');
+  dynamic getFavoriteChampions() {
+    final _$actionInfo = _$_FavoriteChampionsStoreBaseActionController
+        .startAction(name: '_FavoriteChampionsStoreBase.getFavoriteChampions');
     try {
-      return super.getFavoriteChampionsStore();
+      return super.getFavoriteChampions();
     } finally {
       _$_FavoriteChampionsStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -55,6 +70,7 @@ mixin _$FavoriteChampionsStore on _FavoriteChampionsStoreBase, Store {
   String toString() {
     return '''
 listFavoriteChampionsStoreObservable: ${listFavoriteChampionsStoreObservable},
+favoriteChampions: ${favoriteChampions},
 listFavoriteChampionsStatus: ${listFavoriteChampionsStatus}
     ''';
   }
