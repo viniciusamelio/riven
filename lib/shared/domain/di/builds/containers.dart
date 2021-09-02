@@ -1,5 +1,6 @@
 import 'package:kiwi/kiwi.dart';
 import 'package:riven/modules/builds/presentation/presenters/build_store.dart';
+import 'package:riven/modules/favorites_champions/presentation/favorite_champions_store.dart';
 import 'package:riven/shared/data/repositories/builds.dart';
 import 'package:riven/shared/data/repositories/favorite_champions.dart';
 import 'package:riven/shared/domain/datasources/document_db.dart';
@@ -73,3 +74,9 @@ final removeFavoriteChampionsDIContainer = KiwiContainer()
       favoriteChampionsRepoDIContainer(),
     ),
   );
+
+final favoriteChampionsStoreDIContainer = KiwiContainer()
+  ..registerFactory<FavoriteChampionsStore>(
+      (container) => FavoriteChampionsStore(
+            getFavoriteChampionsDIContainer(),
+          ));
