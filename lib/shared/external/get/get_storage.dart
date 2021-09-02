@@ -9,7 +9,8 @@ class GetStorageDataSource implements LocalStorage {
   }
 
   list() {
-    return box.getValues();
+    final values = box.getValues();
+    return values;
   }
 
   remove(String key) {
@@ -17,6 +18,9 @@ class GetStorageDataSource implements LocalStorage {
   }
 
   save(String key, value) {
-    box.write(key, value);
+    Iterable a = box.getValues();
+    if (!a.contains(key)) {
+      box.write(key, value);
+    }
   }
 }

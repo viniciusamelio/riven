@@ -1,5 +1,4 @@
 import 'package:mobx/mobx.dart';
-import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/domain/use_cases/favorite_champions/iget_favorite_champions_use_case.dart';
 part 'favorite_champions_store.g.dart';
 
@@ -14,7 +13,7 @@ abstract class _FavoriteChampionsStoreBase with Store {
   }
 
   @observable
-  ObservableFuture<List<Build>>? listFavoriteChampionsStoreObservable;
+  ObservableFuture<List>? listFavoriteChampionsStoreObservable;
 
   @computed
   FutureStatus? get listFavoriteChampionsStatus =>

@@ -1,4 +1,3 @@
-import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/domain/repositories/favorite_champions.dart';
 
 abstract class ISaveFavoriteChampionUseCase {
@@ -6,5 +5,5 @@ abstract class ISaveFavoriteChampionUseCase {
 
   ISaveFavoriteChampionUseCase(this.repository);
 
-  void call(String key, Build value);
+  void call(String key);
 }

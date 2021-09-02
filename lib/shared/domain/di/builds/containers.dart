@@ -1,4 +1,5 @@
 import 'package:kiwi/kiwi.dart';
+import 'package:riven/modules/builds/presentation/presenters/build_store.dart';
 import 'package:riven/shared/data/repositories/builds.dart';
 import 'package:riven/shared/data/repositories/favorite_champions.dart';
 import 'package:riven/shared/domain/datasources/document_db.dart';
@@ -29,6 +30,15 @@ final getBuildsDIContainer = KiwiContainer()
   )
   ..registerFactory<DocumentDBDatasource>(
     (container) => FirestoreDatasource(collectionName: 'builds'),
+  );
+
+final buildStoreDIContainer = KiwiContainer()
+  ..registerFactory<BuildStore>(
+    (container) => BuildStore(
+      saveFavoriteChampionUseCase: saveFavoriteChampionsDIContainer(),
+      removeFavoriteChampionUseCase: removeFavoriteChampionsDIContainer(),
+      getFavoriteChampionsUseCase: getFavoriteChampionsDIContainer(),
+    ),
   );
 
 final favoriteChampionsRepoDIContainer = KiwiContainer()

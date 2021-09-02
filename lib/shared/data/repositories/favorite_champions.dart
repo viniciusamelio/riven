@@ -9,15 +9,9 @@ class FavoriteChampionsRepositoryImpl implements FavoriteChampionsRepository {
   FavoriteChampionsRepositoryImpl(this._dataSource);
 
   @override
-  Future<List<Build>> list() async {
-    final builds = await _dataSource.list();
-    final List<Build> buildList = [];
-    for (var build in builds) {
-      buildList.add(
-        BuildMapper.fromMap(build),
-      );
-    }
-    return buildList;
+  Future<List> list() async {
+    final Iterable championNames = await _dataSource.list();
+    return championNames.toList();
   }
 
   @override
@@ -26,8 +20,8 @@ class FavoriteChampionsRepositoryImpl implements FavoriteChampionsRepository {
   }
 
   @override
-  void save(String key, Build value) {
-    _dataSource.save(key, value.champion!.name);
+  void save(String key) {
+    _dataSource.save(key, key);
   }
 
   @override

@@ -23,10 +23,7 @@ class _BuildViewState extends State<BuildScreen> {
 
   @override
   void initState() {
-    _buildStore = BuildStore(
-      saveFavoriteChampionUseCase: saveFavoriteChampionsDIContainer(),
-      removeFavoriteChampionUseCase: removeFavoriteChampionsDIContainer(),
-    );
+    _buildStore = buildStoreDIContainer();
     _pageController = PageController(
       initialPage: _buildStore.pageIndex,
     );

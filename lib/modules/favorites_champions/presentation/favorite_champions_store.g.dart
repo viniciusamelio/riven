@@ -22,14 +22,14 @@ mixin _$FavoriteChampionsStore on _FavoriteChampionsStoreBase, Store {
       name: '_FavoriteChampionsStoreBase.listFavoriteChampionsStoreObservable');
 
   @override
-  ObservableFuture<List<Build>>? get listFavoriteChampionsStoreObservable {
+  ObservableFuture<List<dynamic>>? get listFavoriteChampionsStoreObservable {
     _$listFavoriteChampionsStoreObservableAtom.reportRead();
     return super.listFavoriteChampionsStoreObservable;
   }
 
   @override
   set listFavoriteChampionsStoreObservable(
-      ObservableFuture<List<Build>>? value) {
+      ObservableFuture<List<dynamic>>? value) {
     _$listFavoriteChampionsStoreObservableAtom
         .reportWrite(value, super.listFavoriteChampionsStoreObservable, () {
       super.listFavoriteChampionsStoreObservable = value;
