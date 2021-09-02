@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:riven/modules/builds/presentation/views/build.dart';
@@ -15,7 +16,12 @@ void main() async {
   runApp(MyApp());
 }
 
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+
 class MyApp extends StatelessWidget {
+  final routeObserver = Get.put<RouteObserver>(
+    RouteObserver<PageRoute>(),
+  );
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -33,6 +39,9 @@ class MyApp extends StatelessWidget {
           title: 'Riven',
           theme: darkTheme,
           debugShowCheckedModeBanner: false,
+          navigatorObservers: [
+            routeObserver,
+          ],
           routes: {
             '/': (context) => const LoadingScreen(),
             '/home': (context) => const HomeScreen(),
