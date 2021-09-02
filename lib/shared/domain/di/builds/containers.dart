@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:kiwi/kiwi.dart';
 import 'package:riven/modules/builds/presentation/presenters/build_store.dart';
 import 'package:riven/modules/favorites_champions/presentation/favorite_champions_store.dart';
@@ -17,6 +18,11 @@ import 'package:riven/shared/domain/use_cases/favorite_champions/remove_favorite
 import 'package:riven/shared/domain/use_cases/favorite_champions/save_favorite_champion.dart';
 import 'package:riven/shared/external/firebase/firestore.dart';
 import 'package:riven/shared/external/get/get_storage.dart';
+
+final routeObserverDIContainer = KiwiContainer()
+  ..registerInstance<RouteObserver>(
+    (RouteObserver<PageRoute>()),
+  );
 
 final getBuildsDIContainer = KiwiContainer()
   ..registerFactory<IGetBuildsUseCase>(
