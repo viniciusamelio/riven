@@ -32,7 +32,8 @@ class _FavoriteIndicatorState extends State<FavoriteIndicator> {
         height: widget.data.isFavorite ? 40 : 35,
         child: Icon(
           Icons.favorite,
-          color: !widget.data.isFavorite ? greyTextColor.withAlpha(220) : red,
+          color:
+              !widget.data.isFavorite ? greyTextColor.withAlpha(220) : purple,
           size: 35,
         ),
       ),
