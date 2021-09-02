@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:intl/intl.dart';
 import 'package:riven/modules/builds/presentation/presenters/build_store.dart';
 import 'package:riven/modules/builds/presentation/widgets/molecules/favorite_indicator.dart';
@@ -26,7 +27,6 @@ class _BuildHeaderState extends State<BuildHeader> {
   final decimalFormatter = NumberFormat.decimalPattern('pt-BR');
 
   final BuildStore _buildStore = buildStoreDIContainer();
-  bool isFavorite = false;
 
   @override
   void initState() {
@@ -37,9 +37,7 @@ class _BuildHeaderState extends State<BuildHeader> {
   void _checkIfIsFavorite() async {
     final favoritesChampions = await _buildStore.getFavoriteChampionsUseCase();
     if (favoritesChampions.contains(widget.data.championStats.name)) {
-      setState(() {
-        isFavorite = true;
-      });
+      _buildStore.isFavorite = true;
     }
   }
 
@@ -86,16 +84,18 @@ class _BuildHeaderState extends State<BuildHeader> {
                   Positioned(
                     right: 36,
                     bottom: 0,
-                    child: FavoriteIndicator(
-                      data: FavoriteIndicatorParams(
-                        isFavorite: isFavorite,
-                        setFavoriteFunction: () =>
-                            _buildStore.saveFavoriteChampionUseCase(
-                          widget.data.championStats.name,
+                    child: Observer(
+                      builder: (_) => FavoriteIndicator(
+                        data: FavoriteIndicatorParams(
+                          isFavorite: _buildStore.isFavorite,
+                          setFavoriteFunction: () =>
+                              _buildStore.saveFavoriteChampionUseCase(
+                            widget.data.championStats.name,
+                          ),
+                          unsetFavoriteFunction: () =>
+                              _buildStore.removeFavoriteChampionUseCase(
+                                  widget.data.championStats.name),
                         ),
-                        unsetFavoriteFunction: () =>
-                            _buildStore.removeFavoriteChampionUseCase(
-                                widget.data.championStats.name),
                       ),
                     ),
                   ),

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:riven/modules/builds/presentation/presenters/build_store.dart';
 import 'package:riven/modules/builds/presentation/widgets/pages/build.dart';
 import 'package:riven/modules/builds/presentation/widgets/pages/counters.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/build_page.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/counters.dart';
-import 'package:riven/shared/domain/di/builds/containers.dart';
 import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -18,14 +16,12 @@ class BuildScreen extends StatefulWidget {
 
 class _BuildViewState extends State<BuildScreen> {
   late final Build _build;
-  late final BuildStore _buildStore;
   late final PageController _pageController;
-
+  int pageIndex = 1;
   @override
   void initState() {
-    _buildStore = buildStoreDIContainer();
     _pageController = PageController(
-      initialPage: _buildStore.pageIndex,
+      initialPage: 1,
     );
     super.initState();
   }
@@ -40,11 +36,11 @@ class _BuildViewState extends State<BuildScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: SalomonBottomBar(
-        currentIndex: _buildStore.pageIndex,
+        currentIndex: pageIndex,
         onTap: (i) => setState(
           () {
             if (i == 0) Navigator.pop(context);
-            _buildStore.pageIndex = i;
+            pageIndex = i;
             _pageController.jumpToPage(i);
           },
         ),

@@ -18,8 +18,5 @@ abstract class _BuildStoreBase with Store {
   final IGetFavoriteChampionsUseCase getFavoriteChampionsUseCase;
 
   @observable
-  int pageIndex = 1;
-
-  @observable
   bool isFavorite = false;
 }
