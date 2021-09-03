@@ -3,6 +3,8 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:from_css_color/from_css_color.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:riven/modules/search/presentation/widgets/molecules/champion_search_tile.dart';
+import 'package:riven/modules/search/presentation/widgets/params/champion_search_tile.dart';
 import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/domain/entities/build_set.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
@@ -81,27 +83,11 @@ class _SearchState extends State<SearchScreen> {
                 );
               },
               itemBuilder: (context, Build suggestion) {
-                return ListTile(
-                  tileColor: fromCssColor('#242631').withOpacity(0.8),
-                  leading: Container(
-                    width: 40,
-                    child: Portrait(
-                      data: PortraitParams(
-                        imageUrl: suggestion.champion!.portraitUrl,
-                        size: 40,
-                      ),
-                    ),
-                  ),
-                  title: Text(
-                    suggestion.champion!.name,
-                    style: assetLabelTextStyle(
-                      color: Colors.white.withAlpha(200),
-                    ),
-                  ),
-                  subtitle: Text(
-                    suggestion.champion!.role,
-                    style: assetLabelTextStyle(),
-                  ),
+                return ChampionSearchTile(
+                  data: ChampionSearchTileParams(
+                      portraitUrl: suggestion.champion!.portraitUrl,
+                      championName: suggestion.champion!.name,
+                      championRole: suggestion.champion!.role),
                 );
               },
               onSuggestionSelected: (suggestion) {
