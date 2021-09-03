@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:from_css_color/from_css_color.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:riven/modules/search/presentation/widgets/molecules/champion_search_tile.dart';
 import 'package:riven/modules/search/presentation/widgets/organisms/champion_search_field.dart';
 import 'package:riven/modules/search/presentation/widgets/params/champion_search_field.dart';
-import 'package:riven/modules/search/presentation/widgets/params/champion_search_tile.dart';
 import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/domain/entities/build_set.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
-import 'package:riven/shared/presentation/styles/text.dart';
-import 'package:riven/shared/presentation/widgets/molecules/portraits.dart';
-import 'package:riven/shared/presentation/widgets/params/portraits.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
