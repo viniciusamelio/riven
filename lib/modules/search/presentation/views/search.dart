@@ -4,6 +4,8 @@ import 'package:from_css_color/from_css_color.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:riven/modules/search/presentation/widgets/molecules/champion_search_tile.dart';
+import 'package:riven/modules/search/presentation/widgets/organisms/champion_search_field.dart';
+import 'package:riven/modules/search/presentation/widgets/params/champion_search_field.dart';
 import 'package:riven/modules/search/presentation/widgets/params/champion_search_tile.dart';
 import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/domain/entities/build_set.dart';
@@ -52,47 +54,10 @@ class _SearchState extends State<SearchScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            TypeAheadField(
-              textFieldConfiguration: TextFieldConfiguration(
-                cursorColor: primaryGreen,
-                decoration: InputDecoration(
-                    labelText: 'Nome do campeão',
-                    contentPadding: const EdgeInsets.symmetric(
-                      vertical: 24,
-                      horizontal: 12,
-                    )),
+            ChampionSearchField(
+              data: ChampionSearchFieldParams(
+                builds: _builds,
               ),
-              suggestionsCallback: (pattern) {
-                return _builds.where(
-                  (element) => element.champion!.name.contains(pattern),
-                );
-              },
-              suggestionsBoxDecoration: SuggestionsBoxDecoration(
-                color: fromCssColor('#242631'),
-                borderRadius: BorderRadius.circular(4),
-                elevation: 0,
-              ),
-              noItemsFoundBuilder: (context) {
-                return ListTile(
-                  title: Text(
-                    'Campeão não encontrado',
-                    style: assetLabelTextStyle(
-                      color: red,
-                    ),
-                  ),
-                );
-              },
-              itemBuilder: (context, Build suggestion) {
-                return ChampionSearchTile(
-                  data: ChampionSearchTileParams(
-                      portraitUrl: suggestion.champion!.portraitUrl,
-                      championName: suggestion.champion!.name,
-                      championRole: suggestion.champion!.role),
-                );
-              },
-              onSuggestionSelected: (suggestion) {
-                print('suggestion selected');
-              },
             ),
             const SizedBox(height: 20),
             Row(
