@@ -7,3 +7,9 @@ abstract class SearchHistoryBuildsRepository {
   Future<Either<LocalStorageError, String>> remove();
   Future<Either<LocalStorageError, Build>> save(String key, Build value);
 }
+
+abstract class SearchHistoryBuildsWithLocalStorage
+    extends SearchHistoryBuildsRepository {
+  @override
+  Future<Either<LocalStorageError, List<Build>>> list({List<Build> builds});
+}
