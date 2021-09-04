@@ -4,3 +4,8 @@ abstract class LocalStorage {
   dynamic remove(String key);
   dynamic list();
 }
+
+abstract class LocalStorageWithClearOption extends LocalStorage {
+  @override
+  dynamic remove([String key]);
+}
