@@ -14,6 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await GetStorage.init();
+  await GetStorage.init('buildSearchHistory');
   runApp(MyApp());
 }
 

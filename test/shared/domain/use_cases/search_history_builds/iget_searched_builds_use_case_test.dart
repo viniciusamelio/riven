@@ -8,10 +8,10 @@ import 'package:riven/shared/domain/use_cases/search_history_builds/get_searched
 import 'package:riven/shared/domain/use_cases/search_history_builds/iget_searched_builds_use_case.dart';
 
 class SearchHistoryBuildsRepositoryImpl extends Mock
-    implements SearchHistoryBuildsRepository {}
+    implements SearchHistoryBuildsWithLocalStorage {}
 
 void main() {
-  late SearchHistoryBuildsRepository repository;
+  late SearchHistoryBuildsWithLocalStorage repository;
   late IGetSearchedBuildsUseCase useCase;
 
   setUp(() {

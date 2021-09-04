@@ -2,10 +2,12 @@ import 'package:get_storage/get_storage.dart';
 import 'package:riven/shared/domain/datasources/local_storage.dart';
 
 class GetStorageDataSource implements LocalStorageWithClearOption {
-  final box = GetStorage();
+  late final box;
   final String container;
 
-  GetStorageDataSource([this.container = 'GetStorage']);
+  GetStorageDataSource([this.container = 'GetStorage']) {
+    box = GetStorage(container);
+  }
 
   find(String key) {
     return box.read<Type?>(key);

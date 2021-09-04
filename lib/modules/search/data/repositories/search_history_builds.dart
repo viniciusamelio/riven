@@ -12,9 +12,9 @@ class SearchHistoryBuildsImpl implements SearchHistoryBuildsWithLocalStorage {
   @override
   Future<Either<LocalStorageError, List<Build>>> list(
       {List<Build> builds = const []}) async {
-    late final result;
+    late final Either<LocalStorageError, List<Build>> result;
     try {
-      final Iterable<String> searchedBuilds = await _dataSource.list();
+      final Iterable searchedBuilds = await _dataSource.list();
       final buildList = getBuildFromIterable(searchedBuilds, builds);
       result = right(buildList);
     } catch (e) {

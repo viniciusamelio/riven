@@ -49,8 +49,8 @@ final getBuildsDIContainer = KiwiContainer()
   );
 
 final buildStoreDIContainer = KiwiContainer()
-  ..registerFactory<BuildStore>(
-    (container) => BuildStore(
+  ..registerInstance<BuildStore>(
+    BuildStore(
       saveFavoriteChampionUseCase: saveFavoriteChampionsDIContainer(),
       removeFavoriteChampionUseCase: removeFavoriteChampionsDIContainer(),
       getFavoriteChampionsUseCase: getFavoriteChampionsDIContainer(),
@@ -66,6 +66,11 @@ final favoriteChampionsRepoDIContainer = KiwiContainer()
 
 final localStorageDataSourceDIContainer = KiwiContainer()
   ..registerFactory<LocalStorage>(
+    (container) => GetStorageDataSource(),
+  );
+
+final localStorageWithClearOptionDataSourceDIContainer = KiwiContainer()
+  ..registerFactory<LocalStorageWithClearOption>(
     (container) => GetStorageDataSource(),
   );
 
@@ -103,10 +108,18 @@ final searchChampionHistoryRepositoryDIContainer = KiwiContainer()
     ),
   );
 
+final searchChampionHistoryRepositoryWithLocalStorageDIContainer =
+    KiwiContainer()
+      ..registerFactory<SearchHistoryBuildsWithLocalStorage>(
+        (container) => SearchHistoryBuildsImpl(
+          GetStorageDataSource('buildSearchHistory'),
+        ),
+      );
+
 final getSearchedBuildsDIContainer = KiwiContainer()
   ..registerFactory<IGetSearchedBuildsUseCase>(
     (container) => GetSearchedBuilds(
-      searchChampionHistoryRepositoryDIContainer(),
+      searchChampionHistoryRepositoryWithLocalStorageDIContainer(),
     ),
   );
 
@@ -125,8 +138,8 @@ final removeSearchedBuildsDIContainer = KiwiContainer()
   );
 
 final searchStoreDIContainer = KiwiContainer()
-  ..registerFactory<SearchStore>(
-    (container) => SearchStore(
+  ..registerInstance<SearchStore>(
+    SearchStore(
       getSearchedBuildsDIContainer(),
       saveSearchedBuildDIContainer(),
       removeSearchedBuildsDIContainer(),
