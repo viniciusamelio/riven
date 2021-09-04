@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:riven/modules/search/presentation/presenters/search_store.dart';
 import 'package:riven/modules/search/presentation/widgets/organisms/champion_search_field.dart';
 import 'package:riven/modules/search/presentation/widgets/params/champion_search_field.dart';
+import 'package:riven/shared/domain/di/builds/containers.dart';
 import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/domain/entities/build_set.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
@@ -16,10 +18,11 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchState extends State<SearchScreen> {
   late List<Build> _builds;
-
+  late final SearchStore _searchStore;
   @override
   void initState() {
     _builds = Provider.of<BuildSet>(context, listen: false).builds;
+    _searchStore = searchStoreDIContainer();
     super.initState();
   }
 
