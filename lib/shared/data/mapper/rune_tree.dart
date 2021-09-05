@@ -16,4 +16,19 @@ class RuneTreeMapper {
       runes: runes,
     );
   }
+
+  static Map<String, dynamic> toMap(RuneTree runeTree) {
+    final List<Map<String, dynamic>> runes = [];
+
+    runeTree.runes.map(
+      (rune) => runes.add(
+        RuneMapper.toMap(rune),
+      ),
+    );
+    return {
+      'name': runeTree.name,
+      'imageUrl': runeTree.imageUrl,
+      'runes': runes,
+    };
+  }
 }
