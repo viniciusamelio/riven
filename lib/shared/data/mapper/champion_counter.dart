@@ -17,4 +17,13 @@ class ChampionCounterMapper {
           map['winrate'].toString().replaceAll('% WR', '').trim(),
         ));
   }
+
+  static Map<String, dynamic> toMap(ChampionCounter champion) {
+    return {
+      'gamesCount': champion.gamesCount,
+      'name': champion.name,
+      'portraitUrl': champion.portraitUrl,
+      'winrate': champion.winrate,
+    };
+  }
 }
