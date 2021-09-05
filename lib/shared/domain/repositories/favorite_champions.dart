@@ -1,8 +1,7 @@
 import 'package:riven/shared/domain/entities/build.dart';
 
 abstract class FavoriteChampionsRepository {
-  Future<List> list();
-  Future<Build?> search(String key);
+  Future<List<Build>> list();
   void remove(String key);
-  void save(String key);
+  void save(Build value);
 }
