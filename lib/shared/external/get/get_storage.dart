@@ -2,7 +2,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:riven/shared/domain/datasources/local_storage.dart';
 
 class GetStorageDataSource implements LocalStorageWithClearOption {
-  late final box;
+  late final GetStorage box;
   final String container;
 
   GetStorageDataSource([this.container = 'GetStorage']) {
@@ -19,12 +19,7 @@ class GetStorageDataSource implements LocalStorageWithClearOption {
   }
 
   remove([String key = ""]) {
-    if (key.isNotEmpty) {
-      box.remove(key);
-      return;
-    }
-
-    box.erase();
+    box.remove(key);
   }
 
   save(String key, value) {
