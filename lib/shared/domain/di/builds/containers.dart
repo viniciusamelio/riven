@@ -3,7 +3,6 @@ import 'package:kiwi/kiwi.dart';
 import 'package:riven/modules/builds/presentation/presenters/build_store.dart';
 import 'package:riven/modules/favorites_champions/presentation/favorite_champions_store.dart';
 import 'package:riven/modules/search/data/repositories/search_history_builds.dart';
-import 'package:riven/modules/search/presentation/presenters/search_store.dart';
 import 'package:riven/shared/data/repositories/builds.dart';
 import 'package:riven/shared/data/repositories/favorite_champions.dart';
 import 'package:riven/shared/domain/datasources/document_db.dart';
@@ -134,14 +133,5 @@ final removeSearchedBuildsDIContainer = KiwiContainer()
   ..registerFactory<IRemoveSearchedBuildsUseCase>(
     (container) => RemoveSearchedBuilds(
       searchChampionHistoryRepositoryDIContainer(),
-    ),
-  );
-
-final searchStoreDIContainer = KiwiContainer()
-  ..registerInstance<SearchStore>(
-    SearchStore(
-      getSearchedBuildsDIContainer(),
-      saveSearchedBuildDIContainer(),
-      removeSearchedBuildsDIContainer(),
     ),
   );

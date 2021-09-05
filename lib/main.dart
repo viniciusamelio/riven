@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
           ],
           routes: {
             '/': (context) => const LoadingScreen(),
-            '/home': (context) => const HomeScreen(),
-            '/build': (context) => const BuildScreen()
+            HomeScreen.route: (context) => const HomeScreen(),
+            BuildScreen.route: (context) => const BuildScreen()
           },
         ),
       ),

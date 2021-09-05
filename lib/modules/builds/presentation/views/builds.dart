@@ -9,6 +9,7 @@ import 'package:riven/shared/presentation/widgets/organisms/portrait_grid.dart';
 import 'package:riven/shared/presentation/widgets/params/portrait_grid.dart';
 
 class BuildsScreen extends StatefulWidget {
+  final String route = '/builds';
   const BuildsScreen({Key? key}) : super(key: key);
 
   @override

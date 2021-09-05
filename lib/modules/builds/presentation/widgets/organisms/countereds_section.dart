@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:riven/modules/builds/presentation/views/build.dart';
 import 'package:riven/modules/builds/presentation/widgets/molecules/counter_card.dart';
 import 'package:riven/modules/builds/presentation/widgets/molecules/section_title.dart';
 import 'package:riven/modules/builds/presentation/widgets/params/counter_card.dart';
@@ -64,7 +65,7 @@ class _CounteredsSectionState extends State<CounteredsSection> {
                   data: CounterCardParams(
                     champion: champion,
                     onTap: () => Navigator.of(context).pushNamed(
-                      '/build',
+                      BuildScreen.route,
                       arguments: build.first,
                     ),
                   ),

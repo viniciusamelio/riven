@@ -8,6 +8,7 @@ import 'package:riven/shared/presentation/styles/color.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class BuildScreen extends StatefulWidget {
+  static String route = '/build';
   const BuildScreen({Key? key}) : super(key: key);
 
   @override

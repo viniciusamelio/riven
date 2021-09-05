@@ -7,6 +7,7 @@ import 'package:riven/shared/presentation/styles/color.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class HomeScreen extends StatefulWidget {
+  static String route = '/home';
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
