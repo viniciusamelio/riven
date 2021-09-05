@@ -7,4 +7,11 @@ class ItemMapper {
       imageUrl: map['src'],
     );
   }
+
+  static Map<String, dynamic> toMap(Item item) {
+    return {
+      'name': item.name,
+      'imageUrl': item.imageUrl,
+    };
+  }
 }
