@@ -48,12 +48,12 @@ final getBuildsDIContainer = KiwiContainer()
   );
 
 final buildStoreDIContainer = KiwiContainer()
-  ..registerInstance<BuildStore>(
-    BuildStore(
+  ..registerFactory<BuildStore>(
+    (container) => (BuildStore(
       saveFavoriteChampionUseCase: saveFavoriteChampionsDIContainer(),
       removeFavoriteChampionUseCase: removeFavoriteChampionsDIContainer(),
       getFavoriteChampionsUseCase: getFavoriteChampionsDIContainer(),
-    ),
+    )),
   );
 
 final favoriteChampionsRepoDIContainer = KiwiContainer()
@@ -65,11 +65,6 @@ final favoriteChampionsRepoDIContainer = KiwiContainer()
 
 final localStorageDataSourceDIContainer = KiwiContainer()
   ..registerFactory<LocalStorage>(
-    (container) => GetStorageDataSource(),
-  );
-
-final localStorageWithClearOptionDataSourceDIContainer = KiwiContainer()
-  ..registerFactory<LocalStorageWithClearOption>(
     (container) => GetStorageDataSource(),
   );
 
