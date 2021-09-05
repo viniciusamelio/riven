@@ -21,4 +21,17 @@ class ChampionStatsMapper {
       ),
     );
   }
+
+  static Map<String, dynamic> toMap(ChampionStats championStats) {
+    return {
+      'banrate': championStats.banrate,
+      'gamesAnalyzed': championStats.gamesAnalyzed,
+      'name': championStats.name,
+      'pickrate': championStats.pickrate,
+      'portraitUrl': championStats.portraitUrl,
+      'role': championStats.role,
+      'tier': championStats.tier,
+      'winrate': championStats.winrate,
+    };
+  }
 }
