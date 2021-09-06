@@ -18,12 +18,6 @@ import 'package:riven/shared/domain/use_cases/favorite_champions/iremove_favorit
 import 'package:riven/shared/domain/use_cases/favorite_champions/isave_favorite_champion_use_case.dart';
 import 'package:riven/shared/domain/use_cases/favorite_champions/remove_favorite_champion.dart';
 import 'package:riven/shared/domain/use_cases/favorite_champions/save_favorite_champion.dart';
-import 'package:riven/shared/domain/use_cases/search_history_builds/get_searched_builds.dart';
-import 'package:riven/shared/domain/use_cases/search_history_builds/iget_searched_builds_use_case.dart';
-import 'package:riven/shared/domain/use_cases/search_history_builds/iremove_searched_builds_use_case.dart';
-import 'package:riven/shared/domain/use_cases/search_history_builds/isave_searched_build_use_case.dart';
-import 'package:riven/shared/domain/use_cases/search_history_builds/remove_searched_build.dart';
-import 'package:riven/shared/domain/use_cases/search_history_builds/save_searched_build.dart';
 import 'package:riven/shared/external/firebase/firestore.dart';
 import 'package:riven/shared/external/get/get_storage.dart';
 
@@ -109,24 +103,3 @@ final searchChampionHistoryRepositoryWithLocalStorageDIContainer =
           GetStorageDataSource('buildSearchHistory'),
         ),
       );
-
-final getSearchedBuildsDIContainer = KiwiContainer()
-  ..registerFactory<IGetSearchedBuildsUseCase>(
-    (container) => GetSearchedBuilds(
-      searchChampionHistoryRepositoryWithLocalStorageDIContainer(),
-    ),
-  );
-
-final saveSearchedBuildDIContainer = KiwiContainer()
-  ..registerFactory<ISaveSearchedBuildUseCase>(
-    (container) => SaveSearchedBuild(
-      searchChampionHistoryRepositoryDIContainer(),
-    ),
-  );
-
-final removeSearchedBuildsDIContainer = KiwiContainer()
-  ..registerFactory<IRemoveSearchedBuildsUseCase>(
-    (container) => RemoveSearchedBuilds(
-      searchChampionHistoryRepositoryDIContainer(),
-    ),
-  );
