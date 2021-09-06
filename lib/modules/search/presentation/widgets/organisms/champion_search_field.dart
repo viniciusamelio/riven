@@ -27,7 +27,9 @@ class ChampionSearchField extends StatelessWidget {
       ),
       suggestionsCallback: (pattern) {
         return data.builds.where(
-          (element) => element.champion!.name.contains(pattern),
+          (element) => element.champion!.name.toLowerCase().contains(
+                pattern.toLowerCase(),
+              ),
         );
       },
       suggestionsBoxDecoration: SuggestionsBoxDecoration(
