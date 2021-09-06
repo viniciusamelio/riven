@@ -14,7 +14,7 @@ abstract class _FavoriteChampionsStoreBase with Store {
   }
 
   @observable
-  ObservableFuture<List>? listFavoriteChampionsStoreObservable;
+  ObservableFuture<List<Build>>? listFavoriteChampionsStoreObservable;
 
   @observable
   ObservableList<Build> favoriteChampions = ObservableList<Build>();

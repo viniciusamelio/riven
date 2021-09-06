@@ -8,6 +8,6 @@ class SaveFavoriteChampion implements ISaveFavoriteChampionUseCase {
   SaveFavoriteChampion(this.repository);
 
   void call(String key, Build value) {
-    repository.save(value);
+    repository.save(key, value);
   }
 }

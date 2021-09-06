@@ -22,10 +22,10 @@ class GetStorageDataSource implements LocalStorageWithClearOption {
     box.remove(key);
   }
 
-  save(String key, value) {
+  save(String key, value) async {
     Iterable a = box.getValues();
-    if (!a.contains(key)) {
-      box.write(key, value);
+    if (!a.contains(value)) {
+      await box.write(key, value);
     }
   }
 }

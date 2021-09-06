@@ -3,22 +3,30 @@ import 'package:riven/shared/domain/entities/champion_stats.dart';
 class ChampionStatsMapper {
   static ChampionStats fromMap(Map<String, dynamic> map) {
     return ChampionStats(
-      banrate: double.parse(
-        map['banrate'].replaceAll('%', ''),
-      ),
-      gamesAnalyzed: int.parse(
-        map['gamesAnalyzed'].toString().replaceAll(',', ''),
-      ),
+      banrate: map['banrate'].runtimeType == String
+          ? double.parse(
+              map['banrate'].replaceAll('%', ''),
+            )
+          : map['banrate'],
+      gamesAnalyzed: map['gamesAnalyzed'].runtimeType == String
+          ? int.parse(
+              map['gamesAnalyzed'].toString().replaceAll(',', ''),
+            )
+          : map['gamesAnalyzed'],
       name: map['name'],
-      pickrate: double.parse(
-        map['pickrate'].replaceAll('%', ''),
-      ),
+      pickrate: map['pickrate'].runtimeType == String
+          ? double.parse(
+              map['pickrate'].replaceAll('%', ''),
+            )
+          : map['pickrate'],
       portraitUrl: map['portrait'],
       role: map['role'],
       tier: map['tier'],
-      winrate: double.parse(
-        map['winrate'].toString().replaceAll('%', ''),
-      ),
+      winrate: map['winrate'].runtimeType == String
+          ? double.parse(
+              map['winrate'].toString().replaceAll('%', ''),
+            )
+          : map['winrate'],
     );
   }
 
@@ -28,7 +36,7 @@ class ChampionStatsMapper {
       'gamesAnalyzed': championStats.gamesAnalyzed,
       'name': championStats.name,
       'pickrate': championStats.pickrate,
-      'portraitUrl': championStats.portraitUrl,
+      'portrait': championStats.portraitUrl,
       'role': championStats.role,
       'tier': championStats.tier,
       'winrate': championStats.winrate,

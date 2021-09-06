@@ -9,9 +9,9 @@ class FavoriteChampionsRepositoryImpl implements FavoriteChampionsRepository {
   FavoriteChampionsRepositoryImpl(this._dataSource);
 
   @override
-  Future<List> list() async {
-    final Iterable championNames = await _dataSource.list();
-    return championNames.toList();
+  list() async {
+    final Iterable favoritedBuilds = await _dataSource.list();
+    return favoritedBuilds;
   }
 
   @override
@@ -20,13 +20,10 @@ class FavoriteChampionsRepositoryImpl implements FavoriteChampionsRepository {
   }
 
   @override
-  void save(String key) {
-    _dataSource.save(key, key);
-  }
-
-  @override
-  Future<Build?> search(String key) async {
-    final build = await _dataSource.find(key);
-    return BuildMapper.fromMap(build);
+  void save(String key, Build build) {
+    _dataSource.save(
+      key,
+      BuildMapper.toMap(build),
+    );
   }
 }

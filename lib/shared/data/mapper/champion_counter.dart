@@ -22,7 +22,7 @@ class ChampionCounterMapper {
     return {
       'gamesCount': champion.gamesCount,
       'name': champion.name,
-      'portraitUrl': champion.portraitUrl,
+      'src': champion.portraitUrl,
       'winrate': champion.winrate,
     };
   }

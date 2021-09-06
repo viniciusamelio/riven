@@ -26,9 +26,13 @@ class RuneTreeMapper {
       ),
     );
     return {
-      'name': runeTree.name,
-      'imageUrl': runeTree.imageUrl,
-      'runes': runes,
+      'perkName': runeTree.name,
+      'src': runeTree.imageUrl,
+      'runes': runeTree.runes
+          .map(
+            (rune) => RuneMapper.toMap(rune),
+          )
+          .toList(),
     };
   }
 }

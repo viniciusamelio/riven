@@ -36,7 +36,9 @@ class _BuildHeaderState extends State<BuildHeader> {
 
   void _checkIfIsFavorite() async {
     final favoritesChampions = await _buildStore.getFavoriteChampionsUseCase();
-    if (favoritesChampions.contains(widget.data.championStats.name)) {
+    if (favoritesChampions.contains(
+      widget.data.build,
+    )) {
       _buildStore.isFavorite = true;
     }
   }
@@ -91,6 +93,7 @@ class _BuildHeaderState extends State<BuildHeader> {
                           setFavoriteFunction: () =>
                               _buildStore.saveFavoriteChampionUseCase(
                             widget.data.championStats.name,
+                            widget.data.build,
                           ),
                           unsetFavoriteFunction: () =>
                               _buildStore.removeFavoriteChampionUseCase(

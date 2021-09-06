@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobx/mobx.dart';
-import 'package:provider/provider.dart';
 import 'package:riven/modules/favorites_champions/presentation/favorite_champions_store.dart';
 import 'package:riven/shared/domain/di/builds/containers.dart';
-import 'package:riven/shared/domain/entities/build_set.dart';
+import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
 import 'package:riven/shared/presentation/styles/padding.dart';
 import 'package:riven/shared/presentation/widgets/organisms/portrait_grid.dart';
@@ -23,28 +22,19 @@ class _FavoriteChampionsScreenState extends State<FavoriteChampionsScreen>
     with RouteAware {
   late FavoriteChampionsStore _store;
   late ReactionDisposer _listFavoriteChampionsReaction;
-  late BuildSet _buildSet;
   late RouteObserver routeObserver;
 
   @override
   void initState() {
     _store = favoriteChampionsStoreDIContainer();
 
-    _buildSet = Provider.of<BuildSet>(context, listen: false);
-
     _listFavoriteChampionsReaction =
         reaction((_) => _store.listFavoriteChampionsStatus, (_) {
       _store.favoriteChampions.clear();
-      List? favoriteSavedChampions =
+      List<Build>? favoriteSavedChampions =
           _store.listFavoriteChampionsStoreObservable?.value;
-
-      for (var build in _buildSet.builds) {
-        for (var championName in favoriteSavedChampions!) {
-          if (build.champion!.name == championName) {
-            _store.favoriteChampions.add(build);
-          }
-        }
-      }
+      if (favoriteSavedChampions != null)
+        _store.favoriteChampions.addAll(favoriteSavedChampions);
     });
 
     super.initState();

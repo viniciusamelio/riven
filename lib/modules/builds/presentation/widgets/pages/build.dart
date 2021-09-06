@@ -30,7 +30,7 @@ class BuildPage extends StatelessWidget {
           children: [
             BuildHeader(
               data: BuildHeaderParams(
-                championStats: data.build.champion!,
+                build: data.build,
               ),
             ),
             const SizedBox(

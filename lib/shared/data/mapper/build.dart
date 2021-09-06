@@ -69,51 +69,45 @@ class BuildMapper {
   }
 
   static Map<String, dynamic> toMap(Build build) {
-    final List<ChampionCounter> countereds = [];
-    final List<ChampionCounter> counters = [];
-    final List<Item> earlyItems = [];
-    final List<Item> endgameItems = [];
-    final List<RuneTree> runes = [];
-    final List<Skill> skillPriority = [];
-    final List<SummonerSpell> spells = [];
-
-    build.countereds!.map(
-      (champion) => ChampionCounterMapper.toMap(champion),
-    );
-
-    build.counters!.map(
-      (champion) => ChampionCounterMapper.toMap(champion),
-    );
-
-    build.earlyItems!.map(
-      (item) => ItemMapper.toMap(item),
-    );
-
-    build.items!.map(
-      (item) => ItemMapper.toMap(item),
-    );
-
-    build.runes!.map(
-      (rune) => RuneTreeMapper.toMap(rune),
-    );
-
-    build.skillPriority!.map(
-      (skill) => SkillMapper.toMap(skill),
-    );
-
-    build.spells!.map(
-      (spell) => SpellMapper.toMap(spell),
-    );
-
     return {
       'champion': ChampionStatsMapper.toMap(build.champion!),
-      'countereds': countereds,
-      'counters': counters,
-      'earlyItems': earlyItems,
-      'items': endgameItems,
-      'runes': runes,
-      'skillPriority': skillPriority,
-      'spells': spells,
+      'countered': build.countereds!
+          .map(
+            (champion) => ChampionCounterMapper.toMap(champion),
+          )
+          .toList(),
+      'counters': build.counters!
+          .map(
+            (champion) => ChampionCounterMapper.toMap(champion),
+          )
+          .toList(),
+      'items': {
+        'endgame': build.items!
+            .map(
+              (item) => ItemMapper.toMap(item),
+            )
+            .toList(),
+        'starting': build.earlyItems!
+            .map(
+              (item) => ItemMapper.toMap(item),
+            )
+            .toList(),
+      },
+      'runes': build.runes!
+          .map(
+            (rune) => RuneTreeMapper.toMap(rune),
+          )
+          .toList(),
+      'skillsPriority': build.skillPriority!
+          .map(
+            (skill) => SkillMapper.toMap(skill),
+          )
+          .toList(),
+      'spells': build.spells!
+          .map(
+            (spell) => SpellMapper.toMap(spell),
+          )
+          .toList(),
     };
   }
 }

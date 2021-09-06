@@ -1,3 +1,4 @@
+import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/domain/repositories/favorite_champions.dart';
 
 abstract class IGetFavoriteChampionsUseCase {
@@ -5,5 +6,5 @@ abstract class IGetFavoriteChampionsUseCase {
 
   IGetFavoriteChampionsUseCase(this.repository);
 
-  Future<List> call();
+  Future<List<Build>> call();
 }
