@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobx/mobx.dart';
 import 'package:riven/modules/favorites_champions/presentation/favorite_champions_store.dart';
+import 'package:riven/modules/favorites_champions/widgets/molecules/empty_state.dart';
 import 'package:riven/shared/domain/di/builds/containers.dart';
 import 'package:riven/shared/domain/entities/build.dart';
 import 'package:riven/shared/presentation/styles/color.dart';
@@ -59,44 +60,48 @@ class _FavoriteChampionsScreenState extends State<FavoriteChampionsScreen>
     routeObserver.subscribe(this, ModalRoute.of(context)!);
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      body: SingleChildScrollView(
-        padding: screenPadding,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 18.0),
-              child: Text(
-                "Favoritos <3",
-                style: GoogleFonts.inter(
-                  color: purple,
-                  fontSize: 36,
-                  fontWeight: FontWeight.w800,
+      body: Observer(builder: (_) {
+        if (_store.favoriteChampions.isEmpty)
+          return FavoriteChampionsEmptyStateScreen();
+        return SingleChildScrollView(
+          padding: screenPadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 18.0),
+                child: Text(
+                  "Favoritos <3",
+                  style: GoogleFonts.inter(
+                    color: purple,
+                    fontSize: 36,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Observer(
-              builder: (_) {
-                if (_store.listFavoriteChampionsStatus ==
-                    FutureStatus.pending) {
-                  return CircularProgressIndicator();
-                }
-                return PortraitsGrid(
-                  data: PortraitGridParams(
-                    _store.favoriteChampions,
-                    portraitsSize: MediaQuery.of(context).size.width / 9,
-                    routeName: '/build',
-                    accentColor: purple,
-                  ),
-                );
-              },
-            )
-          ],
-        ),
-      ),
+              const SizedBox(
+                height: 20,
+              ),
+              Observer(
+                builder: (_) {
+                  if (_store.listFavoriteChampionsStatus ==
+                      FutureStatus.pending) {
+                    return CircularProgressIndicator();
+                  }
+                  return PortraitsGrid(
+                    data: PortraitGridParams(
+                      _store.favoriteChampions,
+                      portraitsSize: MediaQuery.of(context).size.width / 9,
+                      routeName: '/build',
+                      accentColor: purple,
+                    ),
+                  );
+                },
+              )
+            ],
+          ),
+        );
+      }),
     );
   }
 }
