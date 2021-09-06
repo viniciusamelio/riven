@@ -26,21 +26,25 @@ class BuildHeader extends StatefulWidget {
 class _BuildHeaderState extends State<BuildHeader> {
   final decimalFormatter = NumberFormat.decimalPattern('pt-BR');
 
-  final BuildStore _buildStore = buildStoreDIContainer();
+  late BuildStore _buildStore;
 
   @override
   void initState() {
+    _buildStore = buildStoreDIContainer();
     _checkIfIsFavorite();
     super.initState();
   }
 
   void _checkIfIsFavorite() async {
     final favoritesChampions = await _buildStore.getFavoriteChampionsUseCase();
-    if (favoritesChampions.contains(
-      widget.data.build,
-    )) {
-      _buildStore.isFavorite = true;
-    }
+    _buildStore.isFavorite = favoritesChampions
+            .where(
+              (element) =>
+                  element.champion!.name == widget.data.build.champion!.name,
+            )
+            .isNotEmpty
+        ? true
+        : false;
   }
 
   @override

@@ -17,15 +17,6 @@ class BuildsScreen extends StatefulWidget {
 }
 
 class _BuildsState extends State<BuildsScreen> {
-  late BuildsStore _buildsStore;
-
-  @override
-  void initState() {
-    _buildsStore = BuildsStore();
-    _buildsStore.buildSet = Provider.of<BuildSet>(context, listen: false);
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -53,7 +44,7 @@ class _BuildsState extends State<BuildsScreen> {
             width: MediaQuery.of(context).size.width,
             child: PortraitsGrid(
               data: PortraitGridParams(
-                _buildsStore.buildSet!.builds,
+                Provider.of<BuildSet>(context).builds,
                 routeName: '/build',
                 portraitsSize: MediaQuery.of(context).size.width / 9,
               ),
