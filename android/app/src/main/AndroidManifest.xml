@@ -2,7 +2,7 @@
     package="com.example.riven">
   <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="riven"
+        android:label="Riven"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
