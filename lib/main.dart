@@ -18,7 +18,6 @@ void main() async {
   runApp(MyApp());
 }
 
-// final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 
 class MyApp extends StatelessWidget {
   @override
