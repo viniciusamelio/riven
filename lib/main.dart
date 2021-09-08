@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<BuildSet>(
-          create: (_) => BuildSet(),
+          create: (_) => BuildSet(builds: []),
         ),
       ],
       child: NotificationListener<OverscrollIndicatorNotification>(

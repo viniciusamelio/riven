@@ -2,5 +2,5 @@ import 'package:riven/shared/domain/entities/build.dart';
 
 class BuildSet {
   final List<Build> builds;
-  BuildSet({this.builds = const []});
+  BuildSet({required this.builds});
 }
