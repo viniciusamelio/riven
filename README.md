@@ -8,6 +8,10 @@ Um simples guia de builds para League of Legends.
 
 Esse projeto foi desenvolvido com o intuito de por em prática conceitos de TDD, Clean Architecture e Atomic Design.
 
+## Download
+- É válido lembrar que é necessário permitir a instalação de apps através do Google Drive, para instalar o apk<br>
+<a href="https://drive.google.com/file/d/1KvOvX6U3YCR6bvn9KNbuIifqp_Y8gG9R/view?usp=sharing" target="_blank"> Baixe aqui</a>
+
 ## O que utilizei/apliquei?
 
 ### Ferramentas
