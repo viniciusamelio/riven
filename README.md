@@ -21,6 +21,7 @@ Esse projeto foi desenvolvido com o intuito de por em prática conceitos de TDD,
 - FireStore: Banco de dados no-sql da Google
 - Lottie: Uso de animações de modo fácil
 - Kiwi: Containers para Injeção de Dependências
+- Github Workflows: Garantir a integridade do projeto de acordo com os commits 
 
 ### Conceitos/Princípios Gerais
 - <strong>Single Responsability Principle (SRP)</strong>;
